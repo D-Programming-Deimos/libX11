@@ -1,9 +1,9 @@
 module deimos.X11.extensions.XInput2;
 
-import X11.Xlib;
-import X11.X;
-import X11.extensions.XI2;
-import X11.extensions.Xge;
+import deimos.X11.Xlib;
+import deimos.X11.X;
+import deimos.X11.extensions.XI2;
+import deimos.X11.extensions.Xge;
 import core.stdc.config;
 
 

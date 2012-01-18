@@ -1,5 +1,5 @@
 module deimos.X11.Xresource;
-import X11.Xlib;
+import deimos.X11.Xlib;
 
 extern( System ){
 /****************************************************************

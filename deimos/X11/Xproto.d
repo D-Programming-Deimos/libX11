@@ -1,8 +1,8 @@
 module deimos.X11.Xproto;
 
-import X11.Xmd;
-import X11.Xprotostr;
-import X11.Xlib;
+import deimos.X11.Xmd;
+import deimos.X11.Xprotostr;
+import deimos.X11.Xlib;
 
 extern( System ){
 /*
