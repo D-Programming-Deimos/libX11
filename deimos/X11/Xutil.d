@@ -3,11 +3,11 @@ module deimos.X11.Xutil;
 import core.stdc.config;
 
                                                         /* You must include <X11/Xlib.h> before including this file     */
-import X11.Xlib;
-import X11.X;
-import X11.Xregion;
-import X11.Xresource : XrmStringToQuark;
-import X11.keysym;
+import deimos.X11.Xlib;
+import deimos.X11.X;
+import deimos.X11.Xregion;
+import deimos.X11.Xresource : XrmStringToQuark;
+import deimos.X11.keysym;
 extern( System ){
 /*
  * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
@@ -566,7 +566,7 @@ extern Bool XPointInRegion(
 );
 
 extern Region XPolygonRegion(
-    X11.Xregion.XPoint*                                 /* points                                                       */,
+    deimos.X11.Xregion.XPoint*                                 /* points                                                       */,
     int                                                 /* n                                                            */,
     int                                                 /* fill_rule                                                    */
 );

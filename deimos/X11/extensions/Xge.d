@@ -2,7 +2,7 @@ module deimos.X11.extensions.Xge;
 
 /* XGE Client interfaces */
 
-import X11.Xlib;
+import deimos.X11.Xlib;
 
 
 /**
