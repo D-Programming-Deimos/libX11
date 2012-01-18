@@ -109,6 +109,9 @@ $(DDOC_PATH)$(PATH_SEP)%.html : %.d
 clean: clean-objects clean-static-lib clean-doc clean-header clean-pkgfile
 	@echo ------------------ Cleaning $^ done
 
+clean-shared: clean-shared-objects clean-shared-lib
+	@echo ------------------ Cleaning $^ done
+
 clean-objects:
 	$(RM) $(OBJECTS)
 	@echo ------------------ Cleaning objects done
@@ -118,11 +121,11 @@ clean-shared-objects:
 	@echo ------------------ Cleaning shared-object done
 
 clean-static-lib:
-	$(RM) $(SONAME)
+	$(RM) $(DLIB_PATH)$(PATH_SEP)$(LIBNAME)
 	@echo ------------------ Cleaning static-lib done
 
 clean-shared-lib:
-	$(RM) $(LIBNAME)
+	$(RM)  $(DLIB_PATH)$(PATH_SEP)$(SONAME).$(VERSION)
 	@echo ------------------ Cleaning shared-lib done
 
 clean-header:
@@ -150,6 +153,9 @@ clean-pkgfile:
 ############# INSTALL #############
 
 install: install-static-lib install-doc install-header install-pkgfile
+	@echo ------------------ Installing $^ done
+	
+install: install-shared-lib install-doc install-header install-pkgfile
 	@echo ------------------ Installing $^ done
 
 install-static-lib:
