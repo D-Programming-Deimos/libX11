@@ -21,13 +21,37 @@ $ make DCFLAGS+="-w -g -O3"
 
 INSTALL
 -------
+Usefull var PREFIX, LIB_DIR, DATA_DIR, DESTDIR
+Default on *NIX:
+ PREFIX      = /usr
+ BIN_DIR     = /usr/bin
+ INCLUDE_DIR = /usr/include/d
+ LIB_DIR     = /usr/lib or /usr/lib64 if you are on 64 bits system
+ DATA_DIR    = /usr/share
+
+Default on Windows:
+%ProgramFiles%      = C:\Program Files
+%programfiles(x86)% = C:\Program Files(x86)
+ 
+ PREFIX      = C:\Program Files
+ BIN_DIR     = C:\Program Files\<PROJECT NAME>\bin
+ INCLUDE_DIR = C:\Program Files\<PROJECT NAME>\import
+ LIB_DIR     = C:\Program Files\<PROJECT NAME>\lib
+ DATA_DIR    = C:\Program Files\<PROJECT NAME>\data
+ 
+ 
+ DESTDIR = , is empty this var it use for chroot an install
+ 
 
 - Install: static lib, doc, header, pkgfile
-$ make install
+$ su -c 'make install'
 
 -Install: shared lib, doc, header, pkgfile
-$ make install-shared
+$ su -c 'make install-shared'
 
 - Install both static and shared lib:   static lib, shared lib, doc, header, pkgfile
-$ make install install-shared-lib
+$ su -c 'make install install-shared-lib'
 
+
+If you install a shred lib you need to run ldconfig:
+su -c 'ldconfig'

@@ -5,7 +5,9 @@ ifdef SystemRoot
     PATH_SEP        =\
     FixPath         = $(subst /,\,$1)
     message         = @(echo $1)
+    SHELL           = cmd.exe
 else
+    SHELL           = sh
     PATH_SEP        =/
     ifeq ($(shell uname), Linux)
         OS              = "Linux"
