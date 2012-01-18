@@ -1,6 +1,9 @@
 BUILD
 -----
-Default build use ldc2 as D compiler and build as a static lib.
+Default build use ldc2 as D compiler and build as a static lib. Use flag -j for speed up.
+Commonly we use this formula: number of cores x 2 + 1
+so if you have 4 cores: 4 x 2 + 1 = 9
+In this case you add to make command this flag -j 9.
 
  - ldc2:
 $ make
