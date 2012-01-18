@@ -127,8 +127,10 @@ else
     LDCFLAGS += -m32
 endif
 
-DESTDIR =
-
+ifndef DESTDIR
+    DESTDIR =
+endif
+    
 # Define var PREFIX, BIN_DIR, LIB_DIR, INCLUDE_DIR, DATA_DIR
 ifndef PREFIX
     ifeq ($(OS),"Windows")
