@@ -1,7 +1,7 @@
 module deimos.X11.Xlib;
 import core.stdc.config;
 import std.c.stdarg;
-import X11.X;
+import deimos.X11.X;
 
 extern( System  ){
 const int XlibSpecificationRelease  = 6;

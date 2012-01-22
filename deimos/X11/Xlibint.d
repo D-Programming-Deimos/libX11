@@ -10,14 +10,14 @@ import std.stdio;
 import core.stdc.config;
 import core.stdc.stdlib : free, malloc, calloc, realloc;
 
-import X11.X    :   XID;
-import X11.Xmd  : CARD32;
-import X11.Xlib :   _XrmHashBucketRec, Bool,Screen, ScreenFormat, Status, Visual, XChar2b, XCharStruct,
+import deimos.X11.X    :   XID;
+import deimos.X11.Xmd  : CARD32;
+import deimos.X11.Xlib :   _XrmHashBucketRec, Bool,Screen, ScreenFormat, Status, Visual, XChar2b, XCharStruct,
                     XConnectionWatchProc, XEvent, XErrorEvent, XExtCodes, XExtData, XFontStruct, XGCValues,
                     XGenericEventCookie, XModifierKeymap, XPointer, XRectangle, XSetWindowAttributes, XWindowAttributes;
-import X11.Xtos;
-import X11.Xproto;                                      /* to declare xEvent                                            */
-import X11.XlibConf;                                    /* for configured options like XTHREADS                         */
+import deimos.X11.Xtos;
+import deimos.X11.Xproto;                                      /* to declare xEvent                                            */
+import deimos.X11.XlibConf;                                    /* for configured options like XTHREADS                         */
 
 extern( System ){
 version( WIN32 )

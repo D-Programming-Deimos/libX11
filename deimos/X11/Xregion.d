@@ -1,8 +1,8 @@
 module deimos.X11.Xregion;
 import core.stdc.config;
 
-import X11.Xlibint;
-import X11.Xlib : XPoint;
+import deimos.X11.Xlibint;
+import deimos.X11.Xlib : XPoint;
 
 extern( System ){
 struct Box{

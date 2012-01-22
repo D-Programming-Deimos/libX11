@@ -3,7 +3,7 @@ module deimos.X11.Xmd;
 import std.conv;
 import core.stdc.config;
 
-import X11.Xtos;
+import deimos.X11.Xtos;
 
 extern( System ){
 /*

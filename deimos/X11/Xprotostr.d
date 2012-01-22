@@ -1,6 +1,6 @@
 module deimos.X11.Xprotostr;
 
-import X11.Xmd;
+import deimos.X11.Xmd;
 
 extern( System ){
 /* Used by PolySegment */

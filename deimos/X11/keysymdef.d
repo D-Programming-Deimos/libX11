@@ -1,6 +1,6 @@
 module deimos.X11.keysymdef;
 
-import X11.keysym;
+import deimos.X11.keysym;
 
 extern( System ){
     const int XK_VoidSymbol                 = 0xffffff;  /* Void symbol */
