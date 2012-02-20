@@ -165,7 +165,7 @@ install-static-lib:
 
 install-shared-lib:
 	$(MKDIR) $(LIB_DIR)
-	$(CP) $(DLIB_PATH)$(PATH_SEP)$(SONAME) $(DESTDIR)$(PATH_SEP)$(LIB_DIR)
+	$(CP) $(DLIB_PATH)$(PATH_SEP)$(SONAME).$(VERSION) $(DESTDIR)$(PATH_SEP)$(LIB_DIR)
 	ln -s $(DESTDIR)$(LIB_DIR)$(PATH_SEP)$(SONAME).$(VERSION)   $(DESTDIR)$(PATH_SEP)$(LIB_DIR)$(PATH_SEP)$(SONAME)
 	@echo ------------------ Installing shared-lib done
 
