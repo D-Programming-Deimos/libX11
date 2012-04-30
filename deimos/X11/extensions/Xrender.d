@@ -23,10 +23,9 @@ module deimos.X11.extensions.Xrender;
  * Author:  Keith Packard, SuSE, Inc.
  */
 
+import deimos.X11.X;
 import deimos.X11.Xlib;
-import deimos.X11.Xfuncproto;
-import deimos.X11.Xosdefs;
-import deimos.Xutil;
+import deimos.X11.Xutil;
 
 import deimos.X11.extensions.render;
 
