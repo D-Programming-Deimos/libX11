@@ -7,6 +7,7 @@ module deimos.X11.Xlibint;
  *  Warning, there be dragons here....
  */
 import std.stdio;
+import std.c.string : memcpy;
 import core.stdc.config;
 import core.stdc.stdlib : free, malloc, calloc, realloc;
 
@@ -585,7 +586,7 @@ void FlushGC(Display* dpy, GC gc){
  * "data" is a pinter to a data buffer.
  * "len" is the length of the data buffer.
  */
-static if( ! DataRoutineIsProcedure ){
+static if( DataRoutineIsProcedure ){
     void Data( Display* dpy, char* data, uint len) {
         if (dpy.bufptr + len <= dpy.bufmax){
             memcpy(dpy.bufptr, data, cast(int)len);
@@ -633,10 +634,10 @@ static if( WORD64 ){
     );
 }
 else{                                                   /* not WORD64                                                   */
-    void Data16( Display* dpy, short* data, uint len)       { Data(dpy, cast(char)* data, len);         }
-    void _XRead16Pad( Display* dpy, short* data, uint len)  { _XReadPad(dpy, cast(char)* data, len);    }
-    void _XRead16( Display* dpy, short* data, uint len)     { _XRead(dpy, cast(char)* data, len);       }
-    static if(long64){
+    void Data16( Display* dpy, short* data, uint len)       { Data(dpy, cast(char *) data, len);         }
+    void _XRead16Pad( Display* dpy, short* data, uint len)  { _XReadPad(dpy, cast(char *) data, len);    }
+    void _XRead16( Display* dpy, short* data, uint len)     { _XRead(dpy, cast(char *) data, len);       }
+    static if(LONG64){
         void Data32( Display* dpy, c_long* data, uint len){ _XData32(dpy, data, len); }
         extern int _XData32(
                 Display*    dpy,
@@ -650,8 +651,8 @@ else{                                                   /* not WORD64           
         );
     }
     else{
-        void Data32( Display* dpy, int* data, uint len)     { Data(dpy, cast(char)* data, len);     }
-        void _XRead32( Display* dpy, int* data, uint len)   { _XRead(dpy, cast(char)* data, len);   }
+        void Data32( Display* dpy, int* data, uint len)     { Data(dpy, cast(char *) data, len);     }
+        void _XRead32( Display* dpy, int* data, uint len)   { _XRead(dpy, cast(char *) data, len);   }
     }
 }
 
