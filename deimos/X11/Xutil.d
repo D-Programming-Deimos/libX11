@@ -26,21 +26,18 @@ const int YNegative   = 0x0020;
  * new version containing base_width, base_height, and win_gravity fields;
  * used with WM_NORMAL_HINTS.
  */
-struct XSizeHints{
+struct XSizeHints {
     c_long flags;                                       /* marks which fields in this structure are defined             */
     int x, y;                                           /* obsolete for new window mgrs, but clients                    */
     int width, height;                                  /* should set so old wm's don't mess up                         */
     int min_width, min_height;
     int max_width, max_height;
-        int width_inc, height_inc;
-    struct min_aspect{
+    int width_inc, height_inc;
+    struct aspect {
         int x;                                          /* numerator                                                    */
         int y;                                          /* denominator                                                  */
-    };
-    struct max_aspect{
-        int x;                                          /* numerator                                                    */
-        int y;                                          /* denominator                                                  */
-    };
+    }
+    aspect min_aspect, max_aspect;
     int base_width, base_height;                        /* added by ICCCM version 1                                     */
     int win_gravity;                                    /* added by ICCCM version 1                                     */
 }
