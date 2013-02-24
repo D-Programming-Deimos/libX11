@@ -21,40 +21,40 @@ enum QueueMode{
     QueuedAfterFlush
 }
 
-int         ConnectionNumber            ( ref Display dpy           )   { return dpy.fd;                                            }
-Window      RootWindow                  ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root;                   }
-int         DefaultScreen               ( ref Display dpy           )   { return dpy.default_screen;                                }
-Window      DefaultRootWindow           ( ref Display dpy           )   { return ScreenOfDisplay( dpy,DefaultScreen( dpy ) ).root;  }
-Visual*     DefaultVisual               ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_visual;            }
-GC          DefaultGC                   ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).default_gc;             }
-uint        BlackPixel                  ( ref Display dpy,int scr   )   { return cast(uint)ScreenOfDisplay( dpy,scr ).black_pixel;  }
-uint        WhitePixel                  ( ref Display dpy,int scr   )   { return cast(uint)ScreenOfDisplay( dpy,scr ).white_pixel;  }
+int         ConnectionNumber            ( Display* dpy           )   { return dpy.fd;                                            }
+Window      RootWindow                  ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root;                   }
+int         DefaultScreen               ( Display* dpy           )   { return dpy.default_screen;                                }
+Window      DefaultRootWindow           ( Display* dpy           )   { return ScreenOfDisplay( dpy,DefaultScreen( dpy ) ).root;  }
+Visual*     DefaultVisual               ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_visual;            }
+GC          DefaultGC                   ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).default_gc;             }
+uint        BlackPixel                  ( Display* dpy,int scr   )   { return cast(uint)ScreenOfDisplay( dpy,scr ).black_pixel;  }
+uint        WhitePixel                  ( Display* dpy,int scr   )   { return cast(uint)ScreenOfDisplay( dpy,scr ).white_pixel;  }
 c_ulong     AllPlanes                   (                           )   { return 0xFFFFFFFF;                                        }
-int         QLength                     ( ref Display dpy           )   { return dpy.qlen;                                          }
-int         DisplayWidth                ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).width;                  }
-int         DisplayHeight               ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).height;                 }
-int         DisplayWidthMM              ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).mwidth;                 }
-int         DisplayHeightMM             ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).mheight;                }
-int         DisplayPlanes               ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_depth;             }
-int         DisplayCells                ( ref Display dpy,int scr   )   { return DefaultVisual( dpy,scr ).map_entries;              }
-int         ScreenCount                 ( ref Display dpy           )   { return dpy.nscreens;                                      }
-char*       ServerVendor                ( ref Display dpy           )   { return dpy.vendor;                                        }
-int         ProtocolVersion             ( ref Display dpy           )   { return dpy.proto_major_version;                           }
-int         ProtocolRevision            ( ref Display dpy           )   { return dpy.proto_minor_version;                           }
-int         VendorRelease               ( ref Display dpy           )   { return dpy.release;                                       }
-char*       DisplayString               ( ref Display dpy           )   { return dpy.display_name;                                  }
-int         DefaultDepth                ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_depth;             }
-Colormap    DefaultColormap             ( ref Display dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).cmap;                   }
-int         BitmapUnit                  ( ref Display dpy           )   { return dpy.bitmap_unit;                                   }
-int         BitmapBitOrder              ( ref Display dpy           )   { return dpy.bitmap_bit_order;                              }
-int         BitmapPad                   ( ref Display dpy           )   { return dpy.bitmap_pad;                                    }
-int         ImagecharOrder              ( ref Display dpy           )   { return dpy.char_order;                                    }
-uint        NextRequest                 ( ref Display dpy           )   { return cast(uint)dpy.request + 1;                         }
-uint        LastKnownRequestProcessed   ( ref Display dpy           )   { return cast(uint)dpy.last_request_read;                   }
+int         QLength                     ( Display* dpy           )   { return dpy.qlen;                                          }
+int         DisplayWidth                ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).width;                  }
+int         DisplayHeight               ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).height;                 }
+int         DisplayWidthMM              ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).mwidth;                 }
+int         DisplayHeightMM             ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).mheight;                }
+int         DisplayPlanes               ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_depth;             }
+int         DisplayCells                ( Display* dpy,int scr   )   { return DefaultVisual( dpy,scr ).map_entries;              }
+int         ScreenCount                 ( Display* dpy           )   { return dpy.nscreens;                                      }
+char*       ServerVendor                ( Display* dpy           )   { return dpy.vendor;                                        }
+int         ProtocolVersion             ( Display* dpy           )   { return dpy.proto_major_version;                           }
+int         ProtocolRevision            ( Display* dpy           )   { return dpy.proto_minor_version;                           }
+int         VendorRelease               ( Display* dpy           )   { return dpy.release;                                       }
+char*       DisplayString               ( Display* dpy           )   { return dpy.display_name;                                  }
+int         DefaultDepth                ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).root_depth;             }
+Colormap    DefaultColormap             ( Display* dpy,int scr   )   { return ScreenOfDisplay( dpy,scr ).cmap;                   }
+int         BitmapUnit                  ( Display* dpy           )   { return dpy.bitmap_unit;                                   }
+int         BitmapBitOrder              ( Display* dpy           )   { return dpy.bitmap_bit_order;                              }
+int         BitmapPad                   ( Display* dpy           )   { return dpy.bitmap_pad;                                    }
+int         ImagecharOrder              ( Display* dpy           )   { return dpy.char_order;                                    }
+uint        NextRequest                 ( Display* dpy           )   { return cast(uint)dpy.request + 1;                         }
+uint        LastKnownRequestProcessed   ( Display* dpy           )   { return cast(uint)dpy.last_request_read;                   }
 
 /* macros for screen oriented applications ( toolkit ) */
-Screen*     ScreenOfDisplay             ( ref Display dpy,int scr   )   { return &dpy.screens[scr];                                  }
-Screen*     DefaultScreenOfDisplay      ( ref Display dpy           )   { return ScreenOfDisplay( dpy,DefaultScreen( dpy ) );       }
+Screen*     ScreenOfDisplay             ( Display* dpy,int scr   )   { return &dpy.screens[scr];                                  }
+Screen*     DefaultScreenOfDisplay      ( Display* dpy           )   { return ScreenOfDisplay( dpy,DefaultScreen( dpy ) );       }
 Display*    DisplayOfScreen             ( Screen s                  )   { return s.display;                                         }
 Window      RootWindowOfScreen          ( Screen s                  )   { return s.root;                                            }
 uint        BlackPixelOfScreen          ( Screen s                  )   { return cast(uint)s.black_pixel;                           }
