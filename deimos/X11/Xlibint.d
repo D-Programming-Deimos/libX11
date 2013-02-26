@@ -367,7 +367,7 @@ const string    CURSORFONT      = "cursor";             /* standard cursor fonts
 /*
  * Display flags
  */
-enum DisplayFlag: c_ulong{
+enum {
     XlibDisplayIOError      = 1L << 0,
     XlibDisplayClosing      = 1L << 1,
     XlibDisplayNoXkb        = 1L << 2,

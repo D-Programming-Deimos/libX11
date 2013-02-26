@@ -45,7 +45,7 @@ const KeySym    NoSymbol        = 0;    /* special KeySym                       
 /* Input Event Masks. Used as event-mask window attribute and as arguments
    to Grab requests.  Not to be confused with event names.  */
 
-enum EventMask:long {
+enum {
     NoEventMask             = 0,
     KeyPressMask            = 1<<0,
     KeyReleaseMask          = 1<<1,
@@ -78,7 +78,7 @@ enum EventMask:long {
 confused with event masks above.  They start from 2 because 0 and 1
 are reserved in the protocol for errors and replies. */
 
-enum EventType:int{
+enum {
     KeyPress            = 2,
     KeyRelease          = 3,
     ButtonPress         = 4,
@@ -119,7 +119,7 @@ enum EventType:int{
 /* Key masks. Used as modifiers to GrabButton and GrabKey, results of QueryPointer,
    state in various key-, mouse-, and button-related events. */
 
-enum KeyMask:uint{
+enum {
     ShiftMask   = 1<<0,
     LockMask    = 1<<1,
     ControlMask = 1<<2,
@@ -133,7 +133,7 @@ enum KeyMask:uint{
    to read a GetModifierMapping request.  These correspond to the
    masks defined above. */
 
-enum ModifierName:int{
+enum {
     ShiftMapIndex   = 0,
     LockMapIndex    = 1,
     ControlMapIndex = 2,
@@ -147,7 +147,7 @@ enum ModifierName:int{
 /* button masks.  Used in same manner as Key masks above. Not to be confused
    with button names below. */
 
-enum ButtonMask:int{
+enum {
     Button1Mask = 1<<8,
     Button2Mask = 1<<9,
     Button3Mask = 1<<10,
@@ -156,7 +156,7 @@ enum ButtonMask:int{
     AnyModifier = 1<<15 /* used in GrabButton, GrabKey */
 }
 
-enum KeyOrButtonMask:uint{
+enum {
     ShiftMap    = 1<<0,
     LockMap     = 1<<1,
     ControlMap  = 1<<2,
@@ -165,19 +165,13 @@ enum KeyOrButtonMask:uint{
     Mod3Map     = 1<<5,
     Mod4Map     = 1<<6,
     Mod5Map     = 1<<7,
-    Button1Mask = 1<<8,
-    Button2Mask = 1<<9,
-    Button3Mask = 1<<10,
-    Button4Mask = 1<<11,
-    Button5Mask = 1<<12,
-    AnyModifier = 1<<15 /* used in GrabButton, GrabKey */
 }
 
 /* button names. Used as arguments to GrabButton and as detail in ButtonPress
    and ButtonRelease events.  Not to be confused with button masks above.
    Note that 0 is already defined above as "AnyButton".  */
 
-enum ButtonName:int{
+enum {
     Button1 = 1,
     Button2 = 2,
     Button3 = 3,
@@ -186,7 +180,7 @@ enum ButtonName:int{
 }
 
 /* Notify modes */
-enum NotifyModes:int{
+enum {
     NotifyNormal        = 0,
     NotifyGrab          = 1,
     NotifyUngrab        = 2,
@@ -195,7 +189,7 @@ enum NotifyModes:int{
 const int NotifyHint    = 1; /* for MotionNotify events */
 
 /* Notify detail */
-enum NotifyDetail:int{
+enum {
     NotifyAncestor          = 0,
     NotifyVirtual           = 1,
     NotifyInferior          = 2,
@@ -208,20 +202,20 @@ enum NotifyDetail:int{
 
 /* Visibility notify */
 
-enum VisibilityNotify:int{
+enum {
     VisibilityUnobscured        = 0,
     VisibilityPartiallyObscured = 1,
     VisibilityFullyObscured     = 2
 }
 
 /* Circulation request */
-enum CirculationRequest:int{
+enum {
     PlaceOnTop      = 0,
     PlaceOnBottom   = 1
 }
 
 /* protocol families */
-enum ProtocolFamlily:int{
+enum {
     FamilyInternet          = 0, /* IPv4 */
     FamilyDECnet            = 1,
     FamilyChaos             = 2,
@@ -229,29 +223,26 @@ enum ProtocolFamlily:int{
     FamilyInternet6         = 6  /* IPv6 */
 }
 
-/* authentication families not tied to a specific protocol */
-const int FamilyServerInterpreted = 5;
 /* Property notification */
-
-enum PropertyNotification:int{
+enum {
     PropertyNewValue    = 0,
     PropertyDelete      = 1
 }
 
 /* Color Map notification */
-enum ColorMapNotification:int{
+enum {
     ColormapUninstalled = 0,
     ColormapInstalled   = 1
 }
 
 /* GrabPointer, GrabButton, GrabKeyboard, GrabKey Modes */
-enum GrabMode:int{
+enum {
     GrabModeSync    = 0,
     GrabModeAsync   = 1
 }
 
 /* GrabPointer, GrabKeyboard reply status */
-enum GrabReplyStatus:int{
+enum {
     GrabSuccess         = 0,
     AlreadyGrabbed      = 1,
     GrabInvalidTime     = 2,
@@ -260,7 +251,7 @@ enum GrabReplyStatus:int{
 }
 
 /* AllowEvents modes */
-enum AllowEventMode:int{
+enum {
     AsyncPointer    = 0,
     SyncPointer     = 1,
     ReplayPointer   = 2,
@@ -272,7 +263,7 @@ enum AllowEventMode:int{
 }
 
 /* Used in SetInputFocus, GetInputFocus */
-enum InputFocusRevertTo:int{
+enum {
     RevertToNone        = None,
     RevertToPointerRoot = PointerRoot,
     RevertToParent      = 2
@@ -320,14 +311,13 @@ enum XErrorCode:int
 /* Window classes used by CreateWindow                      */
 /* Note that CopyFromParent is already defined as 0 above   */
 
-enum WindowClass:int{
-    CopyFromParent  = 0,
+enum {
     InputOutput     = 1,
     InputOnly       = 2
 }
 
 /* Window attributes for CreateWindow and ChangeWindowAttributes */
-enum WindowAttribute:ulong{
+enum {
     CWBackPixmap        = 1<<0,
     CWBackPixel         = 1<<1,
     CWBorderPixmap      = 1<<2,
@@ -346,7 +336,7 @@ enum WindowAttribute:ulong{
 }
 
 /* ConfigureWindow structure */
-enum ConfigureWindowStruct:int{
+enum {
     CWX             = 1<<0,
     CWY             = 1<<1,
     CWWidth         = 1<<2,
@@ -356,7 +346,7 @@ enum ConfigureWindowStruct:int{
     CWStackMode     = 1<<6
 }
 /* Bit Gravity */
-enum BitGravity:int{
+enum {
     ForgetGravity       = 0,
     NorthWestGravity    = 1,
     NorthGravity        = 2,
@@ -375,19 +365,19 @@ enum BitGravity:int{
 const uint UnmapGravity= 0;
 
 /* Used in CreateWindow for backing-store hint */
-enum BackingStoreHint:int{
+enum {
     NotUseful   = 0,
     WhenMapped  = 1,
     Always      = 2
 }
 /* Used in GetWindowAttributes reply */
-enum MapState:int{
+enum {
     IsUnmapped      = 0,
     IsUnviewable    = 1,
     IsViewable      = 2
 }
 /* Used in ChangeSaveSet */
-enum ChangeMode:int{
+enum {
     SetModeInsert   = 0,
     SetModeDelete   = 1
 }
@@ -400,7 +390,7 @@ enum CloseDownMode:int
 }
 
 /* Window stacking method (in configureWindow) */
-enum WindowStackingMethod:int{
+enum {
     Above       = 0,
     Below       = 1,
     TopIf       = 2,
@@ -409,13 +399,13 @@ enum WindowStackingMethod:int{
 }
 
 /* Circulation direction */
-enum CircularDirection:int{
+enum {
     RaiseLowest     = 0,
     LowerHighest    = 1
 }
 
 /* Property modes */
-enum PropertyMode:int{
+enum {
     PropModeReplace = 0,
     PropModePrepend = 1,
     PropModeAppend  = 2
@@ -425,7 +415,7 @@ enum PropertyMode:int{
  *****************************************************************/
 
 /* graphics functions, as in GC.alu */
-enum GraphicFunction:int{
+enum {
     GXclear         = 0x0,       /* 0 */
     GXand           = 0x1,       /* src AND dst */
     GXandReverse    = 0x2,       /* src AND NOT dst */
@@ -445,68 +435,68 @@ enum GraphicFunction:int{
 }
 
 /* LineStyle */
-enum LineStyle:int{
+enum {
     LineSolid       = 0,
     LineOnOffDash   = 1,
     LineDoubleDash  = 2
 }
 /* capStyle */
-enum CapStyle:int{
+enum {
     CapNotLast      = 0,
     CapButt         = 1,
     CapRound        = 2,
     CapProjecting   = 3
 }
 /* joinStyle */
-enum JoinStyle:int{
+enum {
     JoinMiter       = 0,
     JoinRound       = 1,
     JoinBevel       = 2
 }
 /* fillStyle */
-enum FillStyle:int{
+enum {
     FillSolid           = 0,
     FillTiled           = 1,
     FillStippled        = 2,
     FillOpaqueStippled  = 3
 }
 /* fillRule */
-enum FillRule:int{
+enum {
     EvenOddRule     = 0,
     WindingRule     = 1
 }
 /* subwindow mode */
-enum SubwindowMode:int{
+enum {
     ClipByChildren      = 0,
     IncludeInferiors    = 1
 }
 /* SetClipRectangles ordering */
-enum ClipRectanglesOrdering:int{
+enum {
     Unsorted        = 0,
     YSorted         = 1,
     YXSorted        = 2,
     YXBanded        = 3
 }
 /* CoordinateMode for drawing routines */
-enum CoordinateMode:int{
+enum {
     CoordModeOrigin     = 0, /* relative to the origin */
     CoordModePrevious   = 1  /* relative to previous point */
 }
 /* Polygon shapes */
-enum PolygonShape:int{
+enum {
     Complex         = 0, /* paths may intersect */
     Nonconvex       = 1, /* no paths intersect, but not convex */
     Convex          = 2  /* wholly convex */
 }
 
 /* Arc modes for PolyFillArc */
-enum ArcMode:int{
+enum {
     ArcChord        = 0, /* join endpoints of arc */
     ArcPieSlice     = 1  /* join endpoints to center of arc */
 }
 /* GC components: masks used in CreateGC, CopyGC, ChangeGC, OR'ed into
    GC.stateChanges */
-enum GCMask:c_ulong{
+enum {
     GCFunction          = 1<<0,
     GCPlaneMask         = 1<<1,
     GCForeground        = 1<<2,
@@ -537,7 +527,7 @@ const uint GCLastBit    = 22;
  *****************************************************************/
 
 /* used in QueryFont -- draw direction */
-enum FontDrawDirection:int{
+enum {
     FontLeftToRight     = 0,
     FontRightToLeft     = 1,
     FontChange          = 255
@@ -547,7 +537,7 @@ enum FontDrawDirection:int{
  *****************************************************************/
 
 /* ImageFormat -- PutImage, GetImage */
-enum ImageFormat:int{
+enum {
     XYBitmap    = 0, /* depth 1, XYFormat */
     XYPixmap    = 1, /* depth == drawable depth */
     ZPixmap = 2  /* depth == drawable depth */
@@ -558,13 +548,13 @@ enum ImageFormat:int{
  *****************************************************************/
 
 /* For CreateColormap */
-enum AllocType:int{
+enum {
     AllocNone   = 0, /* create map with no entries */
     AllocAll    = 1  /* allocate entire map writeable */
 }
 
 /* Flags used in StoreNamedColor, StoreColors */
-enum StoreColor:int{
+enum {
     DoRed   = 1<<0,
     DoGreen = 1<<1,
     DoBlue  = 1<<2
@@ -575,7 +565,7 @@ enum StoreColor:int{
  *****************************************************************/
 
 /* QueryBestSize Class */
-enum QueryBestSizeClass:int{
+enum {
     CursorShape     = 0, /* largest size that can be displayed */
     TileShape       = 1, /* size tiled fastest */
     StippleShape    = 2  /* size stippled fastest */
@@ -585,19 +575,19 @@ enum QueryBestSizeClass:int{
  * KEYBOARD/POINTER STUFF
  *****************************************************************/
 
-enum AutoRepeatMode:int{
+enum {
     AutoRepeatModeOff       = 0,
     AutoRepeatModeOn        = 1,
     AutoRepeatModeDefault   = 2
 }
 
-enum LedMode:int{
+enum {
     LedModeOff      = 0,
     LedModeOn       = 1
 }
 /* masks for ChangeKeyboardControl */
 
-enum KBMask:ulong{
+enum {
     KBKeyClickPercent   = 1<<0,
     KBBellPercent       = 1<<1,
     KBBellPitch         = 1<<2,
@@ -608,13 +598,13 @@ enum KBMask:ulong{
     KBAutoRepeatMode    = 1<<7
 }
 
-enum MappingErrorCode:int{
+enum {
     MappingSuccess      = 0,
     MappingBusy         = 1,
     MappingFailed       = 2
 }
 
-enum MappingType:int{
+enum {
     MappingModifier     = 0,
     MappingKeyboard     = 1,
     MappingPointer      = 2
@@ -624,18 +614,18 @@ enum MappingType:int{
  * SCREEN SAVER STUFF
  *****************************************************************/
 
-enum ScreenSaverBlancking:int{
+enum {
     DontPreferBlanking  = 0,
     PreferBlanking      = 1,
     DefaultBlanking     = 2
 }
 
-enum ScreenSaverDisable:int{
+enum {
     DisableScreenSaver      = 0,
     DisableScreenInterval   = 0
 }
 
-enum ScreenSaverExposure:int{
+enum {
     DontAllowExposures  = 0,
     AllowExposures      = 1,
     DefaultExposures    = 2
@@ -643,7 +633,7 @@ enum ScreenSaverExposure:int{
 
 /* for ForceScreenSaver */
 
-enum ScreenSaverMode:int{
+enum {
     ScreenSaverReset    = 0,
     ScreenSaverActive   = 1
 }
@@ -654,14 +644,14 @@ enum ScreenSaverMode:int{
 
 /* for ChangeHosts */
 
-enum HostChange:int{
+enum {
     HostInsert      = 0,
     HostDelete      = 1
 }
 
 /* for ChangeAccessControl */
 
-enum HostAccess:int{
+enum {
     EnableAccess    = 1,
     DisableAccess   = 0
 }
@@ -670,7 +660,7 @@ enum HostAccess:int{
  * Note that the statically allocated ones are even numbered and the
  * dynamically changeable ones are odd numbered */
 
-enum DisplayClass:int{
+enum {
     StaticGray      = 0,
     GrayScale       = 1,
     StaticColor     = 2,
@@ -681,7 +671,7 @@ enum DisplayClass:int{
 
 /* Byte order  used in imageByteOrder and bitmapBitOrder */
 
-enum ByteOrder:int{
+enum {
     LSBFirst        = 0,
     MSBFirst        = 1
 }
