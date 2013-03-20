@@ -32,5 +32,5 @@ extern( System ){
     enum bool XK_SINHALA        = true;
 }
 
-import deimos.X11.keysymdef;
+public import deimos.X11.keysymdef;
 
