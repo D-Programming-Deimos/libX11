@@ -10,12 +10,14 @@ const int X_HAVE_UTF8_STRING        = 1;
 alias char* XPointer;
 alias int Status;
 
-enum Bool:int{
+alias int Bool;
+enum {
     False,
     True
 }
 
-enum QueueMode{
+alias int QueueMode;
+enum {
     QueuedAlready,
     QueuedAfterReading,
     QueuedAfterFlush
@@ -1013,7 +1015,8 @@ struct XOMCharSetList{
     char** charset_list;
 }
 
-enum XOrientation{
+alias int XOrientation;
+enum {
     XOMOrientation_LTR_TTB,
     XOMOrientation_RTL_TTB,
     XOMOrientation_TTB_LTR,
@@ -1059,7 +1062,9 @@ struct XIMStyles{
     ushort count_styles;
     XIMStyle* supported_styles;
 }
-enum XIMStyle:c_ulong {
+
+alias c_ulong XIMStyle;
+enum {
     XIMPreeditArea      = 0x0001L,
     XIMPreeditCallbacks = 0x0002L,
     XIMPreeditPosition  = 0x0004L,
@@ -1133,7 +1138,8 @@ struct XICCallback{
     XICProc callback;
 }
 
-enum XIMFeedback:c_ulong {
+alias int XIMFeedback;
+enum {
     XIMReverse              = 1L,
     XIMUnderline            = (1L<<1),
     XIMHighlight            = (1L<<2),
@@ -1156,7 +1162,8 @@ struct XIMText {
 }
 
 
-enum XIMPreeditState:c_ulong{
+alias c_ulong XIMPreeditState;
+enum {
     XIMPreeditUnKnown   = 0L,
     XIMPreeditEnable    = 1L,
     XIMPreeditDisable   = (1L<<1)
@@ -1166,12 +1173,14 @@ struct XIMPreeditStateNotifyCallbackStruct {
     XIMPreeditState state;
 }
 
-enum XIMResetState:c_ulong{
+alias c_ulong XIMResetState;
+enum {
     XIMInitialState = 1L,
     XIMPreserveState= 1L<<1
 }
 
-enum XIMStringConversionFeedback:c_ulong{
+alias c_ulong XIMStringConversionFeedback;
+enum {
     XIMStringConversionLeftEdge     = 0x00000001,
     XIMStringConversionRightEdge    = 0x00000002,
     XIMStringConversionTopEdge      = 0x00000004,
@@ -1192,19 +1201,22 @@ struct XIMStringConversionText{
 
 alias ushort XIMStringConversionPosition;
 
-enum XIMStringConversionType:ushort{
+alias ushort XIMStringConversionType;
+enum {
     XIMStringConversionBuffer   = 0x0001,
     XIMStringConversionLine     = 0x0002,
     XIMStringConversionWord     = 0x0003,
     XIMStringConversionChar     = 0x0004
 }
 
-enum XIMStringConversionOperation:ushort{
+alias ushort XIMStringConversionOperation;
+enum {
     XIMStringConversionSubstitution     = 0x0001,
     XIMStringConversionRetrieval        = 0x0002
 }
 
-enum XIMCaretDirection:int{
+alias int XIMCaretDirection;
+enum {
     XIMForwardChar, XIMBackwardChar,
     XIMForwardWord, XIMBackwardWord,
     XIMCaretUp,     XIMCaretDown,
@@ -1229,7 +1241,8 @@ struct XIMPreeditDrawCallbackStruct{
     XIMText* text;
 }
 
-enum XIMCaretStyle{
+alias int XIMCaretStyle;
+enum {
     XIMIsInvisible,                                     /* Disable caret feedback                                       */
     XIMIsPrimary,                                       /* UI defined caret feedback                                    */
     XIMIsSecondary                                      /* UI defined caret feedback                                    */
@@ -1241,7 +1254,8 @@ struct XIMPreeditCaretCallbackStruct{
     XIMCaretStyle style;                                /* Feedback of the caret                                        */
 }
 
-enum XIMStatusDataType{
+alias int XIMStatusDataType;
+enum {
     XIMTextType,
     XIMBitmapType
 }
@@ -1265,7 +1279,8 @@ struct XIMHotKeyTriggers {
     XIMHotKeyTrigger*   key;
 }
 
-enum XIMHotKeyState:c_ulong{
+alias c_ulong XIMHotKeyState;
+enum {
     XIMHotKeyStateON    = 0x0001L,
     XIMHotKeyStateOFF   = 0x0002L
 }

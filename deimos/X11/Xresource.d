@@ -61,7 +61,8 @@ bool XrmStringsEqual(XrmString a1, XrmString a2){ return *a1 == *a2; }
  *
  ****************************************************************/
 
-enum XrmBinding{XrmBindTightly, XrmBindLoosely}
+alias int XrmBinding;
+enum {XrmBindTightly, XrmBindLoosely}
 alias XrmBinding* XrmBindingList;
 
 extern void XrmStringToQuarkList(
@@ -270,7 +271,8 @@ extern char* XrmLocaleOfDatabase(
  *
  ****************************************************************/
 
-enum XrmOptionKind{
+alias int XrmOptionKind;
+enum {
     XrmoptionNoArg,                                     /* Value is specified in OptionDescRec.value                    */
     XrmoptionIsArg,                                     /* Value is the option string itself                            */
     XrmoptionStickyArg,                                 /* Value is characters immediately following option             */

@@ -1959,7 +1959,7 @@ const int X_Reply    = 1;                               /* Normal reply         
 const int X_Error    = 0;                               /* Error                                                        */
 
                                                         /* Request codes                                                */
-enum RequestCode{
+enum {
     X_CreateWindow                   = 1,
     X_ChangeWindowAttributes         = 2,
     X_GetWindowAttributes            = 3,

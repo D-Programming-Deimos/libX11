@@ -13,14 +13,14 @@ const uint XI_2_Major = 2;
 const uint XI_2_Minor = 0;
 
 /* Property event flags */
-enum EventFlag:uint{
+enum {
     XIPropertyDeleted  = 0,
     XIPropertyCreated  = 1,
     XIPropertyModified = 2
 }
 
 /* Enter/Leave and Focus In/Out modes */
-enum Mode:uint{
+enum {
     XINotifyNormal        = 0,
     XINotifyGrab          = 1,
     XINotifyUngrab        = 2,
@@ -30,7 +30,7 @@ enum Mode:uint{
 }
 
 /* Enter/Leave and focus In/out detail */
-enum Detail:uint{
+enum {
     XINotifyAncestor         = 0,
     XINotifyVirtual          = 1,
     XINotifyInferior         = 2,
@@ -42,7 +42,7 @@ enum Detail:uint{
 }
 
 /* Passive grab types */
-enum GrabType:uint{
+enum {
     XIGrabtypeButton  = 0,
     XIGrabtypeKeycode = 1,
     XIGrabtypeEnter   = 2,
@@ -50,14 +50,14 @@ enum GrabType:uint{
 }
 
 /* Passive grab modifier */
-enum GrabModifier:uint{
+enum {
     XIAnyModifier  = 1U << 31,
     XIAnyButton    = 0,
     XIAnyKeycode   = 0
 }
 
 /* XIAllowEvents event-modes */
-enum AllowEvents:uint{
+enum {
     XIAsyncDevice       = 0,
     XISyncDevice        = 1,
     XIReplayDevice      = 2,
@@ -67,13 +67,13 @@ enum AllowEvents:uint{
 }
 
 /* DeviceChangedEvent change reasons */
-enum DeviceChangedEvent:uint{
+enum {
     XISlaveSwitch  = 1,
     XIDeviceChange = 2
 }
 
 /* Hierarchy flags */
-enum HierarchyFlags:int{
+enum {
     XIMasterAdded    = 1 << 0,
     XIMasterRemoved  = 1 << 1,
     XISlaveAdded     = 1 << 2,
@@ -85,7 +85,7 @@ enum HierarchyFlags:int{
 }
 
 /* ChangeHierarchy constants */
-enum ChangeHierarchy:uint{
+enum {
     XIAddMaster    = 1,
     XIRemoveMaster = 2,
     XIAttachSlave  = 3,
@@ -96,13 +96,13 @@ const int XIAttachToMaster = 1;
 const int XIFloating       = 2;
 
 /* Valuator modes */
-enum ValuatorModes:uint{
+enum {
     XIModeRelative = 0,
     XIModeAbsolute = 1
 }
 
 /* Device types */
-enum DeviceTypes:uint{
+enum {
     XIMasterPointer  = 1,
     XIMasterKeyboard = 2,
     XISlavePointer   = 3,
@@ -111,7 +111,7 @@ enum DeviceTypes:uint{
 }
 
 /* Device classes */
-enum DeviceClass:uint{
+enum {
     XIKeyClass      = 0,
     XIButtonClass   = 1,
     XIValuatorClass = 2
@@ -140,13 +140,13 @@ template XIMaskLen(int event){
 }
 
 /* Fake device ID's for event selection */
-enum FakeDevice{
+enum {
     XIAllDevices       = 0,
     XIAllMasterDevices = 1
 }
 
 /* Event types */
-enum EventType{
+enum {
     XI_DeviceChanged    = 1,
     XI_KeyPress         = 2,
     XI_KeyRelease       = 3,
@@ -164,7 +164,7 @@ enum EventType{
     XI_RawButtonPress   = 15,
     XI_RawButtonRelease = 16,
     XI_RawMotion        = 17,
-    XI_LASTEVENT        = EventType.XI_RawMotion
+    XI_LASTEVENT        = XI_RawMotion
 }
 /* NOTE: XI2LASTEVENT in xserver/include/inputstr.h must be the same value
  * as XI_LASTEVENT if the server is supposed to handle masks etc. for this
@@ -174,23 +174,23 @@ enum EventType{
  * Note: the protocol spec defines a mask to be of (1 << type). Clients are
  * free to create masks by bitshifting instead of using these defines.
  */
- enum EventMask{
-    XI_DeviceChangedMask    = (1 << EventType.XI_DeviceChanged),
-    XI_KeyPressMask         = (1 << EventType.XI_KeyPress),
-    XI_KeyReleaseMask       = (1 << EventType.XI_KeyRelease),
-    XI_ButtonPressMask      = (1 << EventType.XI_ButtonPress),
-    XI_ButtonReleaseMask    = (1 << EventType.XI_ButtonRelease),
-    XI_MotionMask           = (1 << EventType.XI_Motion),
-    XI_EnterMask            = (1 << EventType.XI_Enter),
-    XI_LeaveMask            = (1 << EventType.XI_Leave),
-    XI_FocusInMask          = (1 << EventType.XI_FocusIn),
-    XI_FocusOutMask         = (1 << EventType.XI_FocusOut),
-    XI_HierarchyChangedMask = (1 << EventType.XI_HierarchyChanged),
-    XI_PropertyEventMask    = (1 << EventType.XI_PropertyEvent),
-    XI_RawKeyPressMask      = (1 << EventType.XI_RawKeyPress),
-    XI_RawKeyReleaseMask    = (1 << EventType.XI_RawKeyRelease),
-    XI_RawButtonPressMask   = (1 << EventType.XI_RawButtonPress),
-    XI_RawButtonReleaseMask = (1 << EventType.XI_RawButtonRelease),
-    XI_RawMotionMask        = (1 << EventType.XI_RawMotion)
+ enum {
+    XI_DeviceChangedMask    = (1 << XI_DeviceChanged),
+    XI_KeyPressMask         = (1 << XI_KeyPress),
+    XI_KeyReleaseMask       = (1 << XI_KeyRelease),
+    XI_ButtonPressMask      = (1 << XI_ButtonPress),
+    XI_ButtonReleaseMask    = (1 << XI_ButtonRelease),
+    XI_MotionMask           = (1 << XI_Motion),
+    XI_EnterMask            = (1 << XI_Enter),
+    XI_LeaveMask            = (1 << XI_Leave),
+    XI_FocusInMask          = (1 << XI_FocusIn),
+    XI_FocusOutMask         = (1 << XI_FocusOut),
+    XI_HierarchyChangedMask = (1 << XI_HierarchyChanged),
+    XI_PropertyEventMask    = (1 << XI_PropertyEvent),
+    XI_RawKeyPressMask      = (1 << XI_RawKeyPress),
+    XI_RawKeyReleaseMask    = (1 << XI_RawKeyRelease),
+    XI_RawButtonPressMask   = (1 << XI_RawButtonPress),
+    XI_RawButtonReleaseMask = (1 << XI_RawButtonRelease),
+    XI_RawMotionMask        = (1 << XI_RawMotion)
 }
 }
