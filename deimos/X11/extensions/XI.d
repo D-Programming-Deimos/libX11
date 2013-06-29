@@ -74,7 +74,7 @@ extern(System){
 
     const string INAME = "XInputExtension";
 
-enum InputType : string {
+enum {
     XI_KEYBOARD                         = "KEYBOARD",
     XI_MOUSE                            = "MOUSE",
     XI_TABLET                           = "TABLET",
@@ -98,7 +98,7 @@ enum InputType : string {
 
 /* Indices into the versions[] array (XExtInt.c). Used as a index to
  * retrieve the minimum version of XI from _XiCheckExtInit */
-enum Version{
+enum {
     Dont_Check                          = 0,
     XInput_Initial_Release              = 1,
     XInput_Add_XDeviceBell              = 2,
@@ -109,42 +109,42 @@ enum Version{
 }
 /* DO NOT ADD TO HERE -> XI2 */
 
-enum Status:uint{
+enum {
     XI_Absent                           = 0,
     XI_Present                          = 1
 }
 
-enum Initial_Release{
+enum {
     XI_Initial_Release_Major            = 1,
     XI_Initial_Release_Minor            = 0
 }
 
-enum Add_XDeviceBell{
+enum {
     XI_Add_XDeviceBell_Major            = 1,
     XI_Add_XDeviceBell_Minor            = 1
 }
 
-enum Add_XSetDeviceValuators{
+enum {
     XI_Add_XSetDeviceValuators_Major    = 1,
     XI_Add_XSetDeviceValuators_Minor    = 2
 }
 
-enum Add_XChangeDeviceControl{
+enum {
     XI_Add_XChangeDeviceControl_Major   = 1,
     XI_Add_XChangeDeviceControl_Minor   = 3
 }
 
-enum Add_DevicePresenceNotify{
+enum {
     XI_Add_DevicePresenceNotify_Major   = 1,
     XI_Add_DevicePresenceNotify_Minor   = 4
 }
 
-enum Add_DeviceProperties{
+enum {
     XI_Add_DeviceProperties_Major       = 1,
     XI_Add_DeviceProperties_Minor       = 5
 }
 
-enum Device{
+enum {
     DEVICE_RESOLUTION                   = 1,
     DEVICE_ABS_CALIB                    = 2,
     DEVICE_CORE                         = 3,
@@ -165,7 +165,7 @@ enum Device{
 
     const int UseXKeyboard              = 0xFF;
 
-enum CheckDeviceType{
+enum {
     IsXPointer                          = 0,
     IsXKeyboard                         = 1,
     IsXExtensionDevice                  = 2,
@@ -173,7 +173,7 @@ enum CheckDeviceType{
     IsXExtensionPointer                 = 4
 }
 
-enum AsynchronousDevice{
+enum {
     AsyncThisDevice                     = 0,
     SyncThisDevice                      = 1,
     ReplayThisDevice                    = 2,
@@ -202,13 +202,13 @@ enum AsynchronousDevice{
 
     const c_long DvInteger              = (1L << 0);
 
-enum DeviceMode: c_long{
+enum {
     DeviceMode                          = (1L << 0),
     Relative                            = 0,
     Absolute                            = 1
 }
 
-enum Proximity: c_long{
+enum {
     ProximityState                      = (1L << 1),
     InProximity                         = (0L << 1),
     OutOfProximity                      = (1L << 1)
@@ -217,7 +217,7 @@ enum Proximity: c_long{
     const int AddToList                 = 0;
     const int DeleteFromList            = 1;
 
-enum ClassType{
+enum {
     KeyClass                            = 0,
     ButtonClass                         = 1,
     ValuatorClass                       = 2,
@@ -228,7 +228,7 @@ enum ClassType{
     AttachClass                         = 7
 }
 
-enum FeedbackClass{
+enum {
     KbdFeedbackClass                    = 0,
     PtrFeedbackClass                    = 1,
     StringFeedbackClass                 = 2,
@@ -237,7 +237,7 @@ enum FeedbackClass{
     BellFeedbackClass                   = 5
 }
 
-enum _DeviceEvent{
+enum {
     _devicePointerMotionHint            = 0,
     _deviceButton1Motion                = 1,
     _deviceButton2Motion                = 2,
@@ -256,7 +256,7 @@ enum _DeviceEvent{
     const int _deviceLeave              = 1;
 
 /* Device presence notify states */
-enum DevicePresence{
+enum {
     DeviceAdded                         = 0,
     DeviceRemoved                       = 1,
     DeviceEnabled                       = 2,
@@ -266,7 +266,7 @@ enum DevicePresence{
 }
 
 /* XI Errors */
-enum XI_Errors{
+enum {
     XI_BadDevice                        = 0,
     XI_BadEvent                         = 1,
     XI_BadMode                          = 2,

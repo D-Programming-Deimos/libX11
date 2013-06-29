@@ -48,7 +48,7 @@ struct XSizeHints {
  */
 
                                                         /* flags argument in size hints                                 */
-enum FlagArgument: c_long{
+enum {
     USPosition  = 1L << 0,                              /* user specified x, y                                          */
     USSize      = 1L << 1,                              /* user specified width, height                                 */
 
@@ -62,8 +62,8 @@ enum FlagArgument: c_long{
     PWinGravity = 1L << 9                               /* program specified window gravity                             */
 }
 
-                                                        /* obsolete                                                     */
-c_long PAllHints = (FlagArgument.PPosition|FlagArgument.PSize|FlagArgument.PMinSize|FlagArgument.PMaxSize|FlagArgument.PResizeInc|FlagArgument.PAspect);
+/* obsolete */
+c_long PAllHints = (PPosition|PSize|PMinSize|PMaxSize|PResizeInc|PAspect);
 
 
 
@@ -80,7 +80,7 @@ struct XWMHints{
 }
 
                                                         /* definition for flags of XWMHints                             */
-enum XWMHintsFlag : c_long{
+enum {
     InputHint           = (1L << 0),
     StateHint           = (1L << 1),
     IconPixmapHint      = (1L << 2),
@@ -93,7 +93,7 @@ enum XWMHintsFlag : c_long{
 }
 
                                                         /* definitions for initial window state                         */
-enum WindowState : int{
+enum {
     WithdrawnState  = 0,                                /* for windows that are not mapped                              */
     NormalState     = 1,                                /* most applications want to start this way                     */
     IconicState     = 3                                 /* application wants to start as an icon                        */
@@ -102,7 +102,7 @@ enum WindowState : int{
 /*
  * Obsolete states no longer defined by ICCCM
  */
-enum ICCCM_State{
+enum {
     DontCareState   = 0,                                /* don't know or care                                           */
     ZoomState       = 2,                                /* application wants to start zoomed                            */
     InactiveState   = 4                                 /* application believes it is seldom used;                      */
@@ -125,7 +125,8 @@ const int XNoMemory             = -1;
 const int XLocaleNotSupported   = -2;
 const int XConverterNotFound    = -3;
 
-enum XICCEncodingStyle{
+alias int XICCEncodingStyle;
+enum {
     XStringStyle,                                       /* STRING                                                       */
     XCompoundTextStyle,                                 /* COMPOUND_TEXT                                                */
     XTextStyle,                                         /* text in owner's encoding (current locale)                    */
@@ -283,7 +284,7 @@ else{
 alias _XRegion* Region;
 
 /* Return values from XRectInRegion() */
-enum RectangleRegion{
+enum {
     RectangleOut    = 0,
     RectangleIn     = 1,
     RectanglePart   = 2
@@ -308,7 +309,7 @@ struct XVisualInfo{
     int       bits_per_rgb;
 }
 
-enum VisualMask{
+enum {
     VisualNoMask            = 0x0,
     VisualIDMask            = 0x1,
     VisualScreenMask        = 0x2,
@@ -345,7 +346,7 @@ const XID ReleaseByFreeingColormap = 1L;                /* for killid field abov
 /*
  * return codes for XReadBitmapFile and XWriteBitmapFile
  */
-enum BitmapFileState{
+enum {
     BitmapSuccess       = 0,
     BitmapOpenFailed    = 1,
     BitmapFileInvalid   = 2,
@@ -360,7 +361,7 @@ enum BitmapFileState{
 
 
                                                         /* Associative lookup table return codes                        */
-enum AssociativeLookup{
+enum {
     XCSUCCESS = 0,                                      /* No error.                                                    */
     XCNOMEM   = 1,                                      /* Out of memory                                                */
     XCNOENT   = 2,                                      /* No entry in table                                            */
