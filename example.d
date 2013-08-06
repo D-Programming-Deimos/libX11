@@ -7,7 +7,8 @@ import std.stdio;
 int main()
 {
 	Display *display = XOpenDisplay(null);
-	if (!display) {
+	if (!display)
+	{
 		writeln("XOpenDisplay failed");
 		return 1;
 	}
@@ -22,7 +23,7 @@ int main()
 		WhitePixel(display,screen)		//back_color
 	);
 
-    XStoreName(display, window, cast(char*) "Example window");
+	XStoreName(display, window, cast(char*) "Example window");
 	XSelectInput(display, window, ExposureMask);
 	XMapWindow(display, window);
 	
@@ -32,27 +33,35 @@ int main()
 	GC gc = DefaultGC(display, screen);
 	
 	bool running = true;
-	while (running) {
+	while (running)
+	{
 		XEvent event;
 		KeySym keySym;
-		while (XPending(display)) {
+		while (XPending(display))
+		{
 			XNextEvent(display, &event);
 			switch (event.type)
 			{
 			case ClientMessage:
-				running = false;
+				//if (cast(Atom) event.xclient.data.l[0] == wmDeleteMessage)
+				{
+					running = false;
+				}
 				break;
+
 			case Expose:
 				XDrawString(display, window, gc, 10, 16, cast(char*) "Hello world !", 13);
 				break;
+
 			default:
 			}
 		}
 	}
 
-    XUnmapWindow(display, window);
-    XDestroyWindow(display, window);
-    XCloseDisplay(display);
+	XUnmapWindow(display, window);
+	XDestroyWindow(display, window);
+	XCloseDisplay(display);
+
 	return 0;
 }
 
