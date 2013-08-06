@@ -1415,18 +1415,18 @@ extern char* XKeysymToString(
 );
 
 extern int function(
+    Display*                                            /* display                                                      */
+)XSynchronize(
     Display*                                            /* display                                                      */,
     Bool                                                /* onoff                                                        */
-)XSynchronize(
-    Display*                                            /* display                                                      */
 );
 extern int function(
+    Display*                                            /* display                                                      */
+)XSetAfterFunction(
     Display*                                            /* display                                                      */,
     int function(
          Display*                                       /* display                                                      */
     )                                                   /* procedure                                                    */
-)XSetAfterFunction(
-    Display*                                            /* display                                                      */
 );
 extern Atom XInternAtom(
     Display*                                            /* display                                                      */,
