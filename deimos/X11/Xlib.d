@@ -792,11 +792,12 @@ struct XClientMessageEvent{
     Window window;
     Atom message_type;
     int format;
-    union data  {
+    union _data  {
                     char b[20];
                     short s[10];
                     c_long l[5];
                 }
+	_data data;
 }
 
 struct XMappingEvent{
