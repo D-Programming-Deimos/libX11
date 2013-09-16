@@ -43,7 +43,7 @@ int main()
 			switch (event.type)
 			{
 			case ClientMessage:
-				//if (cast(Atom) event.xclient.data.l[0] == wmDeleteMessage)
+				if (cast(Atom) event.xclient.data.l[0] == wmDeleteMessage)
 				{
 					running = false;
 				}
