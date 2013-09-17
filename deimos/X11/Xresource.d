@@ -1,7 +1,8 @@
 module deimos.X11.Xresource;
 import deimos.X11.Xlib;
 
-extern( System ){
+extern (C) nothrow:
+
 /****************************************************************
  ****************************************************************
  ***                                                          ***
@@ -300,5 +301,3 @@ extern void XrmParseCommand(
     int*                                                /* argc_in_out                                                  */,
     char**                                              /* argv_in_out                                                  */
 );
-
-}
