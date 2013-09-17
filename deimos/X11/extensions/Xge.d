@@ -4,6 +4,7 @@ module deimos.X11.extensions.Xge;
 
 import deimos.X11.Xlib;
 
+extern (C) nothrow:
 
 /**
  * Generic Event mask.

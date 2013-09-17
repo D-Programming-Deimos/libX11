@@ -4,7 +4,8 @@ import deimos.X11.Xmd;
 import deimos.X11.Xprotostr;
 import deimos.X11.Xlib;
 
-extern( System ){
+extern (C) nothrow:
+
 /*
  * Define constants for the sizes of the network packets.  The sz_ prefix is
  * used instead of something more descriptive so that the symbols are no more
@@ -2095,4 +2096,3 @@ enum {
 //~ #undef Time
 //~ #undef KeyCode
 //~ #undef KeySym
-}

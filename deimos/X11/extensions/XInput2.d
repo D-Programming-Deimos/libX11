@@ -6,8 +6,8 @@ import deimos.X11.extensions.XI2;
 import deimos.X11.extensions.Xge;
 import core.stdc.config;
 
+extern (C) nothrow:
 
-extern( System ){
 /*******************************************************************
  *
  */
@@ -509,4 +509,3 @@ XIGetProperty(
 );
 
 extern void XIFreeDeviceInfo(XIDeviceInfo* info);
-}
