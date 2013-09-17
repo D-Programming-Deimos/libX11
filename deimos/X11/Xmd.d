@@ -5,7 +5,7 @@ import core.stdc.config;
 
 import deimos.X11.Xtos;
 
-extern( System ){
+extern (C) nothrow:
 /*
  *  Xmd.d: MACHINE DEPENDENT DECLARATIONS.
  */
@@ -133,5 +133,3 @@ else{/* else not MUSTCOPY, this is used for 32-bit machines */
      */
     T NEXTPTR(T)(T p){ const T NEXTPTR = p + 1; }
 }/* MUSTCOPY - used machines whose C structs don't line up with proto */
-
-}

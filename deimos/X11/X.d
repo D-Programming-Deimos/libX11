@@ -1,7 +1,8 @@
 module deimos.X11.X;
 import core.stdc.config;
 
-extern( System ){
+extern (C) nothrow:
+
 const uint X_PROTOCOL           = 11;   /* current protocol version */
 const uint X_PROTOCOL_REVISION  = 0;    /* current minor version    */
 
@@ -674,5 +675,4 @@ enum {
 enum {
     LSBFirst        = 0,
     MSBFirst        = 1
-}
 }

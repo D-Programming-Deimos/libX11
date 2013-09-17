@@ -1,7 +1,8 @@
 module deimos.X11.extensions.XI2;
 import std.string;
 
-extern(System){
+extern (C) nothrow:
+
 /* Indices into the versions[] array (XExtInt.c). Used as a index to
  * retrieve the minimum version of XI from _XiCheckExtInit.
  * For indices 0 to 6 see XI.h */
@@ -192,5 +193,4 @@ enum {
     XI_RawButtonPressMask   = (1 << XI_RawButtonPress),
     XI_RawButtonReleaseMask = (1 << XI_RawButtonRelease),
     XI_RawMotionMask        = (1 << XI_RawMotion)
-}
 }
