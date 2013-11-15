@@ -1294,10 +1294,10 @@ struct XIMValuesList{
 }
 
 version( Windows ){
-    alias _Xdebug* _Xdebug_p;
+	extern int	*_Xdebug_p;
+} else {
+	extern int _Xdebug;
 }
-
-extern int _Xdebug;
 
 extern XFontStruct* XLoadQueryFont(
     Display*                                            /* display                                                      */,
