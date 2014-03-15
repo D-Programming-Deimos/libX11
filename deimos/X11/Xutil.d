@@ -1,14 +1,14 @@
 module deimos.X11.Xutil;
 
 import core.stdc.config;
-
-                                                        /* You must include <X11/Xlib.h> before including this file     */
 import deimos.X11.Xlib;
 import deimos.X11.X;
 import deimos.X11.Xregion;
 import deimos.X11.Xresource : XrmStringToQuark;
 import deimos.X11.keysym;
-extern( System ){
+
+extern (C) nothrow:
+
 /*
  * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
  * value (x, y, width, height) was found in the parsed string.
@@ -832,4 +832,3 @@ extern int XXorRegion(
     Region                                              /* srb                                                          */,
     Region                                              /* dr_return                                                    */
 );
-}

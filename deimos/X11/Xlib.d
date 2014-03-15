@@ -3,7 +3,8 @@ import core.stdc.config;
 import std.c.stdarg;
 import deimos.X11.X;
 
-extern( System  ){
+extern (C) nothrow:
+
 const int XlibSpecificationRelease  = 6;
 const int X_HAVE_UTF8_STRING        = 1;
 
@@ -83,7 +84,7 @@ long        EventMaskOfScreen           ( Screen s                  )   { return
 struct XExtData{
     int number;                                         /* number returned by XRegisterExtension                        */
     XExtData* next;                                     /* next item on list of data for structure                      */
-    int function( XExtData* extension ) free_private;   /* called to free private storage                               */
+    extern (C) nothrow int function( XExtData* extension ) free_private;   /* called to free private storage                               */
     XPointer private_data;                              /* data private to this extension.                              */
 }
 
@@ -283,7 +284,8 @@ struct XImage{
     c_ulong  blue_mask;
     XPointer obdata;                                    /* hook for the object routines to hang on                      */
     struct F {                                          /* image manipulation routines                                  */
-        XImage* function(
+        extern (C) nothrow:
+		XImage* function(
                             XDisplay*   /* display          */,
                             Visual*     /* visual           */,
                             uint        /* depth            */,
@@ -410,7 +412,7 @@ struct _XDisplay{
     XID private4;
     XID private5;
     int private6;
-    XID function(_XDisplay*)resource_alloc;             /* allocator function */
+    extern (C) nothrow XID function(_XDisplay*) resource_alloc;             /* allocator function */
     int char_order;                                     /* screen char order, LSBFirst, MSBFirst */
     int bitmap_unit;                                    /* padding and data requirements */
     int bitmap_pad;                                     /* padding requirements on bitmaps */
@@ -429,7 +431,7 @@ struct _XDisplay{
     XPointer private14;
     uint max_request_size;                          /* maximum number 32 bit words in request*/
     _XrmHashBucketRec* db;
-    int function( _XDisplay* )private15;
+    extern (C) nothrow int function( _XDisplay* )private15;
     char* display_name;                             /* "host:display" string used on this connect*/
     int default_screen;                             /* default screen for operations */
     int nscreens;                                   /* number of screens on this server*/
@@ -792,11 +794,12 @@ struct XClientMessageEvent{
     Window window;
     Atom message_type;
     int format;
-    union data  {
+    union _data  {
                     char b[20];
                     short s[10];
                     c_long l[5];
                 }
+	_data data;
 }
 
 struct XMappingEvent{
@@ -1291,10 +1294,10 @@ struct XIMValuesList{
 }
 
 version( Windows ){
-    alias _Xdebug* _Xdebug_p;
+	extern int	*_Xdebug_p;
+} else {
+	extern int _Xdebug;
 }
-
-extern int _Xdebug;
 
 extern XFontStruct* XLoadQueryFont(
     Display*                                            /* display                                                      */,
@@ -1415,18 +1418,18 @@ extern char* XKeysymToString(
 );
 
 extern int function(
+    Display*                                            /* display                                                      */
+)XSynchronize(
     Display*                                            /* display                                                      */,
     Bool                                                /* onoff                                                        */
-)XSynchronize(
-    Display*                                            /* display                                                      */
 );
 extern int function(
+    Display*                                            /* display                                                      */
+)XSetAfterFunction(
     Display*                                            /* display                                                      */,
     int function(
          Display*                                       /* display                                                      */
     )                                                   /* procedure                                                    */
-)XSetAfterFunction(
-    Display*                                            /* display                                                      */
 );
 extern Atom XInternAtom(
     Display*                                            /* display                                                      */,
@@ -3899,5 +3902,3 @@ extern void XFreeEventData(
     Display*                                            /* dpy                                                          */,
     XGenericEventCookie*                                /* cookie                                                       */
 );
-
-}

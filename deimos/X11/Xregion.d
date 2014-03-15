@@ -4,7 +4,8 @@ import core.stdc.config;
 import deimos.X11.Xlibint;
 import deimos.X11.Xlib : XPoint;
 
-extern( System ){
+extern (C) nothrow:
+
 struct Box{
     short x1, x2, y1, y2;
 }
@@ -145,6 +146,4 @@ const int NUMPTSTOBUFFER = 200;
 struct POINTBLOCK {
     XPoint      pts[NUMPTSTOBUFFER];
     POINTBLOCK* next;
-}
-
 }

@@ -3,76 +3,73 @@ module deimos.X11.extensions.XI;
 import std.string : string;
 import core.stdc.config;
 
-
 /* Definitions used by the server, library and client */
 
-extern(System){
+const int sz_xGetExtensionVersionReq            = 8;
+const int sz_xGetExtensionVersionReply          = 32;
+const int sz_xListInputDevicesReq               = 4;
+const int sz_xListInputDevicesReply             = 32;
+const int sz_xOpenDeviceReq                     = 8;
+const int sz_xOpenDeviceReply                   = 32;
+const int sz_xCloseDeviceReq                    = 8;
+const int sz_xSetDeviceModeReq                  = 8;
+const int sz_xSetDeviceModeReply                = 32;
+const int sz_xSelectExtensionEventReq           = 12;
+const int sz_xGetSelectedExtensionEventsReq     = 8;
+const int sz_xGetSelectedExtensionEventsReply   = 32;
+const int sz_xChangeDeviceDontPropagateListReq  = 12;
+const int sz_xGetDeviceDontPropagateListReq     = 8;
+const int sz_xGetDeviceDontPropagateListReply   = 32;
+const int sz_xGetDeviceMotionEventsReq          = 16;
+const int sz_xGetDeviceMotionEventsReply        = 32;
+const int sz_xChangeKeyboardDeviceReq           = 8;
+const int sz_xChangeKeyboardDeviceReply         = 32;
+const int sz_xChangePointerDeviceReq            = 8;
+const int sz_xChangePointerDeviceReply          = 32;
+const int sz_xGrabDeviceReq                     = 20;
+const int sz_xGrabDeviceReply                   = 32;
+const int sz_xUngrabDeviceReq                   = 12;
+const int sz_xGrabDeviceKeyReq                  = 20;
+const int sz_xGrabDeviceKeyReply                = 32;
+const int sz_xUngrabDeviceKeyReq                = 16;
+const int sz_xGrabDeviceButtonReq               = 20;
+const int sz_xGrabDeviceButtonReply             = 32;
+const int sz_xUngrabDeviceButtonReq             = 16;
+const int sz_xAllowDeviceEventsReq              = 12;
+const int sz_xGetDeviceFocusReq                 = 8;
+const int sz_xGetDeviceFocusReply               = 32;
+const int sz_xSetDeviceFocusReq                 = 16;
+const int sz_xGetFeedbackControlReq             = 8;
+const int sz_xGetFeedbackControlReply           = 32;
+const int sz_xChangeFeedbackControlReq          = 12;
+const int sz_xGetDeviceKeyMappingReq            = 8;
+const int sz_xGetDeviceKeyMappingReply          = 32;
+const int sz_xChangeDeviceKeyMappingReq         = 8;
+const int sz_xGetDeviceModifierMappingReq       = 8;
+const int sz_xSetDeviceModifierMappingReq       = 8;
+const int sz_xSetDeviceModifierMappingReply     = 32;
+const int sz_xGetDeviceButtonMappingReq         = 8;
+const int sz_xGetDeviceButtonMappingReply       = 32;
+const int sz_xSetDeviceButtonMappingReq         = 8;
+const int sz_xSetDeviceButtonMappingReply       = 32;
+const int sz_xQueryDeviceStateReq               = 8;
+const int sz_xQueryDeviceStateReply             = 32;
+const int sz_xSendExtensionEventReq             = 16;
+const int sz_xDeviceBellReq                     = 8;
+const int sz_xSetDeviceValuatorsReq             = 8;
+const int sz_xSetDeviceValuatorsReply           = 32;
+const int sz_xGetDeviceControlReq               = 8;
+const int sz_xGetDeviceControlReply             = 32;
+const int sz_xChangeDeviceControlReq            = 8;
+const int sz_xChangeDeviceControlReply          = 32;
+const int sz_xListDevicePropertiesReq           = 8;
+const int sz_xListDevicePropertiesReply         = 32;
+const int sz_xChangeDevicePropertyReq           = 20;
+const int sz_xDeleteDevicePropertyReq           = 12;
+const int sz_xGetDevicePropertyReq              = 24;
+const int sz_xGetDevicePropertyReply            = 32;
 
-    const int sz_xGetExtensionVersionReq            = 8;
-    const int sz_xGetExtensionVersionReply          = 32;
-    const int sz_xListInputDevicesReq               = 4;
-    const int sz_xListInputDevicesReply             = 32;
-    const int sz_xOpenDeviceReq                     = 8;
-    const int sz_xOpenDeviceReply                   = 32;
-    const int sz_xCloseDeviceReq                    = 8;
-    const int sz_xSetDeviceModeReq                  = 8;
-    const int sz_xSetDeviceModeReply                = 32;
-    const int sz_xSelectExtensionEventReq           = 12;
-    const int sz_xGetSelectedExtensionEventsReq     = 8;
-    const int sz_xGetSelectedExtensionEventsReply   = 32;
-    const int sz_xChangeDeviceDontPropagateListReq  = 12;
-    const int sz_xGetDeviceDontPropagateListReq     = 8;
-    const int sz_xGetDeviceDontPropagateListReply   = 32;
-    const int sz_xGetDeviceMotionEventsReq          = 16;
-    const int sz_xGetDeviceMotionEventsReply        = 32;
-    const int sz_xChangeKeyboardDeviceReq           = 8;
-    const int sz_xChangeKeyboardDeviceReply         = 32;
-    const int sz_xChangePointerDeviceReq            = 8;
-    const int sz_xChangePointerDeviceReply          = 32;
-    const int sz_xGrabDeviceReq                     = 20;
-    const int sz_xGrabDeviceReply                   = 32;
-    const int sz_xUngrabDeviceReq                   = 12;
-    const int sz_xGrabDeviceKeyReq                  = 20;
-    const int sz_xGrabDeviceKeyReply                = 32;
-    const int sz_xUngrabDeviceKeyReq                = 16;
-    const int sz_xGrabDeviceButtonReq               = 20;
-    const int sz_xGrabDeviceButtonReply             = 32;
-    const int sz_xUngrabDeviceButtonReq             = 16;
-    const int sz_xAllowDeviceEventsReq              = 12;
-    const int sz_xGetDeviceFocusReq                 = 8;
-    const int sz_xGetDeviceFocusReply               = 32;
-    const int sz_xSetDeviceFocusReq                 = 16;
-    const int sz_xGetFeedbackControlReq             = 8;
-    const int sz_xGetFeedbackControlReply           = 32;
-    const int sz_xChangeFeedbackControlReq          = 12;
-    const int sz_xGetDeviceKeyMappingReq            = 8;
-    const int sz_xGetDeviceKeyMappingReply          = 32;
-    const int sz_xChangeDeviceKeyMappingReq         = 8;
-    const int sz_xGetDeviceModifierMappingReq       = 8;
-    const int sz_xSetDeviceModifierMappingReq       = 8;
-    const int sz_xSetDeviceModifierMappingReply     = 32;
-    const int sz_xGetDeviceButtonMappingReq         = 8;
-    const int sz_xGetDeviceButtonMappingReply       = 32;
-    const int sz_xSetDeviceButtonMappingReq         = 8;
-    const int sz_xSetDeviceButtonMappingReply       = 32;
-    const int sz_xQueryDeviceStateReq               = 8;
-    const int sz_xQueryDeviceStateReply             = 32;
-    const int sz_xSendExtensionEventReq             = 16;
-    const int sz_xDeviceBellReq                     = 8;
-    const int sz_xSetDeviceValuatorsReq             = 8;
-    const int sz_xSetDeviceValuatorsReply           = 32;
-    const int sz_xGetDeviceControlReq               = 8;
-    const int sz_xGetDeviceControlReply             = 32;
-    const int sz_xChangeDeviceControlReq            = 8;
-    const int sz_xChangeDeviceControlReply          = 32;
-    const int sz_xListDevicePropertiesReq           = 8;
-    const int sz_xListDevicePropertiesReply         = 32;
-    const int sz_xChangeDevicePropertyReq           = 20;
-    const int sz_xDeleteDevicePropertyReq           = 12;
-    const int sz_xGetDevicePropertyReq              = 24;
-    const int sz_xGetDevicePropertyReply            = 32;
-
-    const string INAME = "XInputExtension";
+const string INAME = "XInputExtension";
 
 enum {
     XI_KEYBOARD                         = "KEYBOARD",
@@ -152,18 +149,18 @@ enum {
     DEVICE_ABS_AREA                     = 5
 }
 
-    const int NoSuchExtension           = 1;
+const int NoSuchExtension           = 1;
 
-    const int COUNT                     = 0;
-    const int CREATE                    = 1;
+const int COUNT                     = 0;
+const int CREATE                    = 1;
 
-    const int NewPointer                = 0;
-    const int NewKeyboard               = 1;
+const int NewPointer                = 0;
+const int NewKeyboard               = 1;
 
-    const int XPOINTER                  = 0;
-    const int XKEYBOARD                 = 1;
+const int XPOINTER                  = 0;
+const int XKEYBOARD                 = 1;
 
-    const int UseXKeyboard              = 0xFF;
+const int UseXKeyboard              = 0xFF;
 
 enum {
     IsXPointer                          = 0,
@@ -214,8 +211,8 @@ enum {
     OutOfProximity                      = (1L << 1)
 }
 
-    const int AddToList                 = 0;
-    const int DeleteFromList            = 1;
+const int AddToList                 = 0;
+const int DeleteFromList            = 1;
 
 enum {
     KeyClass                            = 0,
@@ -250,10 +247,10 @@ enum {
     _noExtensionEvent                   = 9
 }
 
-    const int _devicePresence           = 0;
+const int _devicePresence           = 0;
 
-    const int _deviceEnter              = 0;
-    const int _deviceLeave              = 1;
+const int _deviceEnter              = 0;
+const int _deviceLeave              = 1;
 
 /* Device presence notify states */
 enum {
@@ -299,5 +296,4 @@ struct XExtensionVersion{
     int     present;
     short   major_version;
     short   minor_version;
-}
 }

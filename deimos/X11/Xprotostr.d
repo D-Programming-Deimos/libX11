@@ -2,7 +2,6 @@ module deimos.X11.Xprotostr;
 
 import deimos.X11.Xmd;
 
-extern( System ){
 /* Used by PolySegment */
 
 struct _xSegment {
@@ -31,4 +30,3 @@ struct _xArc {
     INT16   angle1, angle2;
 }
 alias _xArc xArc;
-}
