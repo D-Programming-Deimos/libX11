@@ -9,7 +9,7 @@ SOURCES                 = deimos/X11/Xlib.d           deimos/X11/Xprotostr.d    
                           deimos/X11/Xlibint.d        deimos/X11/Xutil.d                deimos/X11/keysym.d         \
                           deimos/X11/Xproto.d         deimos/X11/extensions/Xge.d       deimos/X11/extensions/XI2.d \
                           deimos/X11/extensions/XI.d  deimos/X11/extensions/XInput2.d   deimos/X11/keysymdef.d      \
-                          deimos/X11/X.d              deimos/X11/Xresource.d
+                          deimos/X11/X.d              deimos/X11/Xresource.d            deimos/X11/Xatom.d
 DDOCFILES               =
 
 # include some command
