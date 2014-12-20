@@ -1,3 +1,10 @@
+//############################################
+// Copyright (C) Lyrebird Software 1996-2014
+// File: Xproto.d
+// Created: 2014-12-20 11:25:17
+// Modified: 2014-12-20 11:36:34
+//############################################
+
 module deimos.X11.Xproto;
 
 import deimos.X11.Xmd;
@@ -964,8 +971,8 @@ struct _xEvent {
             KeyButMask state;
             BYTE mode;                                  /* really XMode                                                 */
             BYTE flags;                                 /* sameScreen and focus booleans, packed together               */
-            const int ELFlagFocus       = 1 << 0;
-            const int ELFlagSameScreen  = 1 << 1;
+            __gshared const int ELFlagFocus       = 1 << 0;
+            __gshared const int ELFlagSameScreen  = 1 << 1;
         }
         struct focus{
             CARD32 pad00;
