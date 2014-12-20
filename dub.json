@@ -1,0 +1,21 @@
+{
+    "name": "libX11",
+    "description": "Core X11 protocol client library.",
+    "homepage": "http://www.x.org/wiki/",
+    "license": "LGPL v3",
+    "sourcePaths":["."],
+    "excludedSourceFiles":["deimos/X11/Xlib_xcb.d"],
+    "libs": ["X11"],
+    "configurations":[
+        {
+            "name":"lib",
+            "targetType":"sourceLibrary"
+        },
+        {
+            "name":"dx11-example",
+            "targetName":"dx11-example",        
+            "targetType":"executable",
+            "sourceFiles":["example.d"]
+        }
+    ]
+}
