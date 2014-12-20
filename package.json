@@ -1,0 +1,25 @@
+{
+    "name":         "DX11",
+    "description":  "Interface to the C X11 library",
+    "homepage":     "https://github.com/D-Programming-Deimos/libX11",
+    "authors": [
+                    "Walter Bright",
+                    "Jonathan MERCIER aka bioinfornatics",
+                    "at. al."
+    ],
+    "license":      "LGPL v3+",
+    "excludedSourceFiles":[
+        "deimos/X11/Xlib_xcb.d"
+    ],
+    "sourcePaths": [
+                    "deimos"
+    ],
+    "importPaths": [
+                    "."
+    ],
+    "libs": [
+                    "X11"
+    ],
+    "targetType":   "staticLibrary",
+    "targetName":   "DX11"
+}
