@@ -1,10 +1,3 @@
-//############################################
-// Copyright (C) Lyrebird Software 1996-2014
-// File: Xproto.d
-// Created: 2014-12-20 11:25:17
-// Modified: 2014-12-20 12:23:09
-//############################################
-
 module deimos.X11.Xproto;
 
 import deimos.X11.Xmd;
