@@ -940,6 +940,8 @@ struct xError{
  *    All events are 32 bytes
  *****************************************************************/
 
+enum ELFlagFocus       = 1 << 0;
+enum ELFlagSameScreen  = 1 << 1;
 struct _xEvent {
     union u{
         struct u{
@@ -964,8 +966,6 @@ struct _xEvent {
             KeyButMask state;
             BYTE mode;                                  /* really XMode                                                 */
             BYTE flags;                                 /* sameScreen and focus booleans, packed together               */
-            const int ELFlagFocus       = 1 << 0;
-            const int ELFlagSameScreen  = 1 << 1;
         }
         struct focus{
             CARD32 pad00;
