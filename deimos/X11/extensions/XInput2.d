@@ -61,7 +61,7 @@ struct XIButtonState{
 
 struct XIValuatorState{
     int             mask_len;
-    ubyte           mask;
+    ubyte*          mask;
     double*         values;
 } 
 
