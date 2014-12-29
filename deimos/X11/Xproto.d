@@ -170,7 +170,7 @@ const int sz_xChangeKeyboardMappingReq      = 8;
 we must redefine the following types in terms of Xmd.h's types, which may
 include bit fields.  All of these are #undef'd at the end of this file,
 restoring the definitions in X.h.  */
-
+private {
 alias CARD32    Window;
 alias CARD32    Drawable;
 alias CARD32    Font;
@@ -183,7 +183,7 @@ alias CARD32    VisualID;
 alias CARD32    Time;
 alias CARD8     KeyCode;
 alias CARD32    KeySym;
-
+}
 const int X_TCP_PORT = 6000;                            /* add display number                                           */
 
 const int xTrue                         = 1;
