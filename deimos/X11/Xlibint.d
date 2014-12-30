@@ -11,7 +11,7 @@ import std.c.string : memcpy;
 import core.stdc.config;
 import core.stdc.stdlib : free, malloc, calloc, realloc;
 
-import deimos.X11.X    :   XID;
+import deimos.X11.X    :   XID, GContext, KeySym, Font, VisualID, Window;
 import deimos.X11.Xmd  : CARD32;
 import deimos.X11.Xlib :   _XrmHashBucketRec, Bool,Screen, ScreenFormat, Status, Visual, XChar2b, XCharStruct,
                     XConnectionWatchProc, XEvent, XErrorEvent, XExtCodes, XExtData, XFontStruct, XGCValues,
