@@ -120,10 +120,10 @@ alias XrmValue* XrmValuePtr;
  *
  ****************************************************************/
 struct _XrmHashBucketRec{}
-alias _XrmHashBucketRec* XrmHashBucket ;
-alias XrmHashBucket* XrmHashTable ;
-alias XrmHashTable[] XrmSearchList;
-alias _XrmHashBucketRec* XrmDatabase ;
+alias _XrmHashBucketRec*    XrmHashBucket;
+alias XrmHashBucket*        XrmHashTable;
+alias XrmHashTable[]        XrmSearchList;
+alias _XrmHashBucketRec*    XrmDatabase;
 
 
 extern void XrmDestroyDatabase(
