@@ -112,12 +112,12 @@ struct _XDisplay{
                             Display*                    /* dpy                                                          */,
                             XEvent*                     /* re                                                           */,
                             xEvent*                     /* event                                                        */
-    ) event_vec[128];
+    )[128] event_vec;
     extern (C) nothrow Status function(                 /* vector for event to wire                                     */
                             Display*                    /* dpy                                                          */,
                             XEvent*                     /* re                                                           */,
                             xEvent*                     /* event                                                        */
-    ) wire_vec[128];
+    )[128] wire_vec;
     KeySym                  lock_meaning;               /* for XLookupString                                            */
     _XLockInfo*             lock;                       /* multi-thread state, display lock                             */
     _XInternalAsync*        async_handlers;             /* for internal async                                           */
@@ -174,13 +174,13 @@ struct _XDisplay{
                             Display*                    /* dpy                                                          */,
                             XGenericEventCookie*        /* Xlib event                                                   */,
                             xEvent*                     /* wire event                                                   */
-    ) generic_event_vec[128];
+    )[128] generic_event_vec;
                                                         /* vector for event copy, index is (extension - 128)            */
     extern (C) nothrow Bool function(
                             Display*                    /* dpy                                                          */,
                             XGenericEventCookie*        /* in                                                           */,
                             XGenericEventCookie*        /* out                                                          */
-    ) generic_event_copy_vec[128];
+    )[128] generic_event_copy_vec;
     void*                   cookiejar;                  /* cookie events returned but not claimed                       */
 };
 alias _XDisplay Display;

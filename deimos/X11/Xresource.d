@@ -122,7 +122,7 @@ alias XrmValue* XrmValuePtr;
 struct _XrmHashBucketRec{}
 alias _XrmHashBucketRec*    XrmHashBucket;
 alias XrmHashBucket*        XrmHashTable;
-alias XrmHashTable          XrmSearchList[];
+alias XrmHashTable[]        XrmSearchList;
 alias _XrmHashBucketRec*    XrmDatabase;
 
 

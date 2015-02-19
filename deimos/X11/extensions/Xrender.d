@@ -159,7 +159,7 @@ struct XTrapezoid {
 }
 
 struct XTransform {
-	XFixed  matrix[3][3];
+	XFixed[3][3]  matrix;
 }
 
 struct XFilters {

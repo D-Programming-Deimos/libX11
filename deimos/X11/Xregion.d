@@ -144,6 +144,6 @@ const int NUMPTSTOBUFFER = 200;
  * the buffers together
  */
 struct POINTBLOCK {
-    XPoint      pts[NUMPTSTOBUFFER];
+    XPoint[NUMPTSTOBUFFER]      pts;
     POINTBLOCK* next;
 }

@@ -373,7 +373,7 @@ struct XKeyboardState{
     uint bell_pitch, bell_duration;
     c_ulong led_mask;
     int global_auto_repeat;
-    char auto_repeats[32];
+    char[32] auto_repeats;
 }
 
 /* Data structure for XGetMotionEvents.  */
@@ -552,7 +552,7 @@ struct XKeymapEvent{
     Bool send_event;                                    /* true if this came from a SendEvent request                   */
     Display* display;                                   /* Display the event was read from                              */
     Window window;
-    char key_vector[32];
+    char[32] key_vector;
 }
 
 struct XExposeEvent{
@@ -795,9 +795,9 @@ struct XClientMessageEvent{
     Atom message_type;
     int format;
     union _data  {
-                    char b[20];
-                    short s[10];
-                    c_long l[5];
+                    char[20] b;
+                    short[10] s;
+                    c_long[5] l;
                 }
 	_data data;
 }
@@ -896,7 +896,7 @@ struct XGenericEventCookie{
     XKeymapEvent xkeymap;
     XGenericEvent xgeneric;
     XGenericEventCookie xcookie;
-    c_long pad[24];
+    c_long[24] pad;
 };
 
 int XAllocID(Display* dpy) {return cast(int) dpy.resource_alloc(dpy);}
