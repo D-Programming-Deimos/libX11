@@ -187,7 +187,7 @@ enum {
     NotifyUngrab        = 2,
     NotifyWhileGrabbed  = 3
 }
-const int NotifyHint    = 1; /* for MotionNotify events */
+enum NotifyHint    = 1; /* for MotionNotify events */
 
 /* Notify detail */
 enum {

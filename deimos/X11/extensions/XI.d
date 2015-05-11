@@ -5,93 +5,91 @@ import core.stdc.config;
 
 /* Definitions used by the server, library and client */
 
-const int sz_xGetExtensionVersionReq            = 8;
-const int sz_xGetExtensionVersionReply          = 32;
-const int sz_xListInputDevicesReq               = 4;
-const int sz_xListInputDevicesReply             = 32;
-const int sz_xOpenDeviceReq                     = 8;
-const int sz_xOpenDeviceReply                   = 32;
-const int sz_xCloseDeviceReq                    = 8;
-const int sz_xSetDeviceModeReq                  = 8;
-const int sz_xSetDeviceModeReply                = 32;
-const int sz_xSelectExtensionEventReq           = 12;
-const int sz_xGetSelectedExtensionEventsReq     = 8;
-const int sz_xGetSelectedExtensionEventsReply   = 32;
-const int sz_xChangeDeviceDontPropagateListReq  = 12;
-const int sz_xGetDeviceDontPropagateListReq     = 8;
-const int sz_xGetDeviceDontPropagateListReply   = 32;
-const int sz_xGetDeviceMotionEventsReq          = 16;
-const int sz_xGetDeviceMotionEventsReply        = 32;
-const int sz_xChangeKeyboardDeviceReq           = 8;
-const int sz_xChangeKeyboardDeviceReply         = 32;
-const int sz_xChangePointerDeviceReq            = 8;
-const int sz_xChangePointerDeviceReply          = 32;
-const int sz_xGrabDeviceReq                     = 20;
-const int sz_xGrabDeviceReply                   = 32;
-const int sz_xUngrabDeviceReq                   = 12;
-const int sz_xGrabDeviceKeyReq                  = 20;
-const int sz_xGrabDeviceKeyReply                = 32;
-const int sz_xUngrabDeviceKeyReq                = 16;
-const int sz_xGrabDeviceButtonReq               = 20;
-const int sz_xGrabDeviceButtonReply             = 32;
-const int sz_xUngrabDeviceButtonReq             = 16;
-const int sz_xAllowDeviceEventsReq              = 12;
-const int sz_xGetDeviceFocusReq                 = 8;
-const int sz_xGetDeviceFocusReply               = 32;
-const int sz_xSetDeviceFocusReq                 = 16;
-const int sz_xGetFeedbackControlReq             = 8;
-const int sz_xGetFeedbackControlReply           = 32;
-const int sz_xChangeFeedbackControlReq          = 12;
-const int sz_xGetDeviceKeyMappingReq            = 8;
-const int sz_xGetDeviceKeyMappingReply          = 32;
-const int sz_xChangeDeviceKeyMappingReq         = 8;
-const int sz_xGetDeviceModifierMappingReq       = 8;
-const int sz_xSetDeviceModifierMappingReq       = 8;
-const int sz_xSetDeviceModifierMappingReply     = 32;
-const int sz_xGetDeviceButtonMappingReq         = 8;
-const int sz_xGetDeviceButtonMappingReply       = 32;
-const int sz_xSetDeviceButtonMappingReq         = 8;
-const int sz_xSetDeviceButtonMappingReply       = 32;
-const int sz_xQueryDeviceStateReq               = 8;
-const int sz_xQueryDeviceStateReply             = 32;
-const int sz_xSendExtensionEventReq             = 16;
-const int sz_xDeviceBellReq                     = 8;
-const int sz_xSetDeviceValuatorsReq             = 8;
-const int sz_xSetDeviceValuatorsReply           = 32;
-const int sz_xGetDeviceControlReq               = 8;
-const int sz_xGetDeviceControlReply             = 32;
-const int sz_xChangeDeviceControlReq            = 8;
-const int sz_xChangeDeviceControlReply          = 32;
-const int sz_xListDevicePropertiesReq           = 8;
-const int sz_xListDevicePropertiesReply         = 32;
-const int sz_xChangeDevicePropertyReq           = 20;
-const int sz_xDeleteDevicePropertyReq           = 12;
-const int sz_xGetDevicePropertyReq              = 24;
-const int sz_xGetDevicePropertyReply            = 32;
+enum sz_xGetExtensionVersionReq            = 8;
+enum sz_xGetExtensionVersionReply          = 32;
+enum sz_xListInputDevicesReq               = 4;
+enum sz_xListInputDevicesReply             = 32;
+enum sz_xOpenDeviceReq                     = 8;
+enum sz_xOpenDeviceReply                   = 32;
+enum sz_xCloseDeviceReq                    = 8;
+enum sz_xSetDeviceModeReq                  = 8;
+enum sz_xSetDeviceModeReply                = 32;
+enum sz_xSelectExtensionEventReq           = 12;
+enum sz_xGetSelectedExtensionEventsReq     = 8;
+enum sz_xGetSelectedExtensionEventsReply   = 32;
+enum sz_xChangeDeviceDontPropagateListReq  = 12;
+enum sz_xGetDeviceDontPropagateListReq     = 8;
+enum sz_xGetDeviceDontPropagateListReply   = 32;
+enum sz_xGetDeviceMotionEventsReq          = 16;
+enum sz_xGetDeviceMotionEventsReply        = 32;
+enum sz_xChangeKeyboardDeviceReq           = 8;
+enum sz_xChangeKeyboardDeviceReply         = 32;
+enum sz_xChangePointerDeviceReq            = 8;
+enum sz_xChangePointerDeviceReply          = 32;
+enum sz_xGrabDeviceReq                     = 20;
+enum sz_xGrabDeviceReply                   = 32;
+enum sz_xUngrabDeviceReq                   = 12;
+enum sz_xGrabDeviceKeyReq                  = 20;
+enum sz_xGrabDeviceKeyReply                = 32;
+enum sz_xUngrabDeviceKeyReq                = 16;
+enum sz_xGrabDeviceButtonReq               = 20;
+enum sz_xGrabDeviceButtonReply             = 32;
+enum sz_xUngrabDeviceButtonReq             = 16;
+enum sz_xAllowDeviceEventsReq              = 12;
+enum sz_xGetDeviceFocusReq                 = 8;
+enum sz_xGetDeviceFocusReply               = 32;
+enum sz_xSetDeviceFocusReq                 = 16;
+enum sz_xGetFeedbackControlReq             = 8;
+enum sz_xGetFeedbackControlReply           = 32;
+enum sz_xChangeFeedbackControlReq          = 12;
+enum sz_xGetDeviceKeyMappingReq            = 8;
+enum sz_xGetDeviceKeyMappingReply          = 32;
+enum sz_xChangeDeviceKeyMappingReq         = 8;
+enum sz_xGetDeviceModifierMappingReq       = 8;
+enum sz_xSetDeviceModifierMappingReq       = 8;
+enum sz_xSetDeviceModifierMappingReply     = 32;
+enum sz_xGetDeviceButtonMappingReq         = 8;
+enum sz_xGetDeviceButtonMappingReply       = 32;
+enum sz_xSetDeviceButtonMappingReq         = 8;
+enum sz_xSetDeviceButtonMappingReply       = 32;
+enum sz_xQueryDeviceStateReq               = 8;
+enum sz_xQueryDeviceStateReply             = 32;
+enum sz_xSendExtensionEventReq             = 16;
+enum sz_xDeviceBellReq                     = 8;
+enum sz_xSetDeviceValuatorsReq             = 8;
+enum sz_xSetDeviceValuatorsReply           = 32;
+enum sz_xGetDeviceControlReq               = 8;
+enum sz_xGetDeviceControlReply             = 32;
+enum sz_xChangeDeviceControlReq            = 8;
+enum sz_xChangeDeviceControlReply          = 32;
+enum sz_xListDevicePropertiesReq           = 8;
+enum sz_xListDevicePropertiesReply         = 32;
+enum sz_xChangeDevicePropertyReq           = 20;
+enum sz_xDeleteDevicePropertyReq           = 12;
+enum sz_xGetDevicePropertyReq              = 24;
+enum sz_xGetDevicePropertyReply            = 32;
 
-const string INAME = "XInputExtension";
+immutable char* INAME = "XInputExtension";
 
-enum {
-    XI_KEYBOARD                         = "KEYBOARD",
-    XI_MOUSE                            = "MOUSE",
-    XI_TABLET                           = "TABLET",
-    XI_TOUCHSCREEN                      = "TOUCHSCREEN",
-    XI_TOUCHPAD                         = "TOUCHPAD",
-    XI_BARCODE                          = "BARCODE",
-    XI_BUTTONBOX                        = "BUTTONBOX",
-    XI_KNOB_BOX                         = "KNOB_BOX",
-    XI_ONE_KNOB                         = "ONE_KNOB",
-    XI_NINE_KNOB                        = "NINE_KNOB",
-    XI_TRACKBALL                        = "TRACKBALL",
-    XI_QUADRATURE                       = "QUADRATURE",
-    XI_ID_MODULE                        = "ID_MODULE",
-    XI_SPACEBALL                        = "SPACEBALL",
-    XI_DATAGLOVE                        = "DATAGLOVE",
-    XI_EYETRACKER                       = "EYETRACKER",
-    XI_CURSORKEYS                       = "CURSORKEYS",
-    XI_FOOTMOUSE                        = "FOOTMOUSE",
-    XI_JOYSTICK                         = "JOYSTICK"
-}
+immutable char* XI_KEYBOARD    = "KEYBOARD";
+immutable char* XI_MOUSE       = "MOUSE";
+immutable char* XI_TABLET      = "TABLET";
+immutable char* XI_TOUCHSCREEN = "TOUCHSCREEN";
+immutable char* XI_TOUCHPAD    = "TOUCHPAD";
+immutable char* XI_BARCODE     = "BARCODE";
+immutable char* XI_BUTTONBOX   = "BUTTONBOX";
+immutable char* XI_KNOB_BOX    = "KNOB_BOX";
+immutable char* XI_ONE_KNOB    = "ONE_KNOB";
+immutable char* XI_NINE_KNOB   = "NINE_KNOB";
+immutable char* XI_TRACKBALL   = "TRACKBALL";
+immutable char* XI_QUADRATURE  = "QUADRATURE";
+immutable char* XI_ID_MODULE   = "ID_MODULE";
+immutable char* XI_SPACEBALL   = "SPACEBALL";
+immutable char* XI_DATAGLOVE   = "DATAGLOVE";
+immutable char* XI_EYETRACKER  = "EYETRACKER";
+immutable char* XI_CURSORKEYS  = "CURSORKEYS";
+immutable char* XI_FOOTMOUSE   = "FOOTMOUSE";
+immutable char* XI_JOYSTICK    = "JOYSTICK";
 
 /* Indices into the versions[] array (XExtInt.c). Used as a index to
  * retrieve the minimum version of XI from _XiCheckExtInit */
@@ -149,18 +147,18 @@ enum {
     DEVICE_ABS_AREA                     = 5
 }
 
-const int NoSuchExtension           = 1;
+enum NoSuchExtension           = 1;
 
-const int COUNT                     = 0;
-const int CREATE                    = 1;
+enum COUNT                     = 0;
+enum CREATE                    = 1;
 
-const int NewPointer                = 0;
-const int NewKeyboard               = 1;
+enum NewPointer                = 0;
+enum NewKeyboard               = 1;
 
-const int XPOINTER                  = 0;
-const int XKEYBOARD                 = 1;
+enum XPOINTER                  = 0;
+enum XKEYBOARD                 = 1;
 
-const int UseXKeyboard              = 0xFF;
+enum UseXKeyboard              = 0xFF;
 
 enum {
     IsXPointer                          = 0,
@@ -179,40 +177,44 @@ enum {
     SyncAll                             = 5
 }
 
-    const int FollowKeyboard            = 3;
-    const int RevertToFollowKeyboard    = 3;
+enum : int {
+    FollowKeyboard            = 3,
+    RevertToFollowKeyboard    = 3
+}
 
-    const c_long DvAccelNum             = (1L << 0);
-    const c_long DvAccelDenom           = (1L << 1);
-    const c_long DvThreshold            = (1L << 2);
+enum : c_long {
+    DvAccelNum             = (1 << 0),
+    DvAccelDenom           = (1 << 1),
+    DvThreshold            = (1 << 2),
 
-    const c_long DvKeyClickPercent      = (1L<<0);
-    const c_long DvPercent              = (1L<<1);
-    const c_long DvPitch                = (1L<<2);
-    const c_long DvDuration             = (1L<<3);
-    const c_long DvLed                  = (1L<<4);
-    const c_long DvLedMode              = (1L<<5);
-    const c_long DvKey                  = (1L<<6);
-    const c_long DvAutoRepeatMode       = (1L<<7);
+    DvKeyClickPercent      = (1<<0),
+    DvPercent              = (1<<1),
+    DvPitch                = (1<<2),
+    DvDuration             = (1<<3),
+    DvLed                  = (1<<4),
+    DvLedMode              = (1<<5),
+    DvKey                  = (1<<6),
+    DvAutoRepeatMode       = (1<<7),
 
-    const c_long DvString               = (1L << 0);
+    DvString               = (1 << 0),
 
-    const c_long DvInteger              = (1L << 0);
+    DvInteger              = (1 << 0)
+}
 
-enum {
-    DeviceMode                          = (1L << 0),
+enum : c_ulong {
+    DeviceMode                          = (1 << 0),
     Relative                            = 0,
     Absolute                            = 1
 }
 
-enum {
-    ProximityState                      = (1L << 1),
-    InProximity                         = (0L << 1),
-    OutOfProximity                      = (1L << 1)
+enum : c_ulong {
+    ProximityState                      = (1 << 1),
+    InProximity                         = (0 << 1),
+    OutOfProximity                      = (1 << 1)
 }
 
-const int AddToList                 = 0;
-const int DeleteFromList            = 1;
+enum AddToList                 = 0;
+enum DeleteFromList            = 1;
 
 enum {
     KeyClass                            = 0,
@@ -247,10 +249,10 @@ enum {
     _noExtensionEvent                   = 9
 }
 
-const int _devicePresence           = 0;
+enum _devicePresence           = 0;
 
-const int _deviceEnter              = 0;
-const int _deviceLeave              = 1;
+enum _deviceEnter              = 0;
+enum _deviceLeave              = 1;
 
 /* Device presence notify states */
 enum {
