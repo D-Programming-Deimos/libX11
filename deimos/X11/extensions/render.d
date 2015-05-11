@@ -7,7 +7,7 @@ alias XID		GlyphSet;
 alias XID		Picture;
 alias XID		PictFormat;
 
-enum RENDER_NAME	= "RENDER";
+immutable char* RENDER_NAME	= "RENDER";
 enum RENDER_MAJOR	= 0;
 enum RENDER_MINOR	= 11;
 
@@ -158,14 +158,14 @@ enum CPComponentAlpha		    = (1 << 12);
 enum CPLastBit			        = 12;
 
 /* Filters included in 0.6 */
-enum FilterNearest			    = "nearest";
-enum FilterBilinear			    = "bilinear";
+immutable char* FilterNearest			    = "nearest";
+immutable char* FilterBilinear			    = "bilinear";
 /* Filters included in 0.10 */
-enum FilterConvolution		    = "convolution";
+immutable char* FilterConvolution		    = "convolution";
 
-enum FilterFast			        = "fast";
-enum FilterGood			        = "good";
-enum FilterBest			        = "best";
+immutable char* FilterFast			        = "fast";
+immutable char* FilterGood			        = "good";
+immutable char* FilterBest			        = "best";
 
 enum FilterAliasNone			= -1;
 

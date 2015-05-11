@@ -351,33 +351,33 @@ else{
     void* Xcalloc( int nelem, size_t elsize){ return calloc(nelem, elsize); }
 }
 
-const int       LOCKED          = 1;
-const int       UNLOCKED        = 0;
+enum       LOCKED          = 1;
+enum       UNLOCKED        = 0;
 
-const int       BUFSIZE         = 2048;                 /* X output buffer size.                                        */
-const int       PTSPERBATCH     = 1024;                 /* point batching                                               */
-const int       WLNSPERBATCH    = 50;                   /* wide line batching                                           */
-const int       ZLNSPERBATCH    = 1024;                 /* thin line batching                                           */
-const int       WRCTSPERBATCH   = 10;                   /* wide line rectangle batching                                 */
-const int       ZRCTSPERBATCH   = 256;                  /* thin line rectangle batching                                 */
-const int       FRCTSPERBATCH   = 256;                  /* filled rectangle batching                                    */
-const int       FARCSPERBATCH   = 256;                  /* filled arc batching                                          */
-const string    CURSORFONT      = "cursor";             /* standard cursor fonts                                        */
+enum       BUFSIZE         = 2048;                 /* X output buffer size.                                        */
+enum       PTSPERBATCH     = 1024;                 /* point batching                                               */
+enum       WLNSPERBATCH    = 50;                   /* wide line batching                                           */
+enum       ZLNSPERBATCH    = 1024;                 /* thin line batching                                           */
+enum       WRCTSPERBATCH   = 10;                   /* wide line rectangle batching                                 */
+enum       ZRCTSPERBATCH   = 256;                  /* thin line rectangle batching                                 */
+enum       FRCTSPERBATCH   = 256;                  /* filled rectangle batching                                    */
+enum       FARCSPERBATCH   = 256;                  /* filled arc batching                                          */
+immutable char* CURSORFONT = "cursor";             /* standard cursor fonts                                        */
 
 
 /*
  * Display flags
  */
-enum {
-    XlibDisplayIOError      = 1L << 0,
-    XlibDisplayClosing      = 1L << 1,
-    XlibDisplayNoXkb        = 1L << 2,
-    XlibDisplayPrivSync     = 1L << 3,
-    XlibDisplayProcConni    = 1L << 4,                  /* in _XProcessInternalConnection                               */
-    XlibDisplayReadEvents   = 1L << 5,                  /* in _XReadEvents                                              */
-    XlibDisplayReply        = 1L << 5,                  /* in _XReply                                                   */
-    XlibDisplayWriting      = 1L << 6,                  /* in _XFlushInt, _XSend                                        */
-    XlibDisplayDfltRMDB     = 1L << 7                   /* mark if RM db from XGetDefault                               */
+enum : c_ulong {
+    XlibDisplayIOError      = 1 << 0,
+    XlibDisplayClosing      = 1 << 1,
+    XlibDisplayNoXkb        = 1 << 2,
+    XlibDisplayPrivSync     = 1 << 3,
+    XlibDisplayProcConni    = 1 << 4,                  /* in _XProcessInternalConnection                               */
+    XlibDisplayReadEvents   = 1 << 5,                  /* in _XReadEvents                                              */
+    XlibDisplayReply        = 1 << 5,                  /* in _XReply                                                   */
+    XlibDisplayWriting      = 1 << 6,                  /* in _XFlushInt, _XSend                                        */
+    XlibDisplayDfltRMDB     = 1 << 7                   /* mark if RM db from XGetDefault                               */
 }
 
 /*

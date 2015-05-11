@@ -36,7 +36,7 @@ alias ushort XRandrSizeID;
 alias ushort XRandrSubpixelOrder;
 alias ulong XRandrModeFlags;
 
-enum RANDR_NAME			= "RANDR";
+immutable char* RANDR_NAME			= "RANDR";
 enum RANDR_MAJOR		= 1;
 enum RANDR_MINOR		= 4;
 
@@ -149,16 +149,16 @@ enum BadRRCrtc				= 1;
 enum BadRRMode				= 2;
 enum BadRRProvider			= 3;
 
-enum RR_PROPERTY_BACKLIGHT	= "Backlight";
-enum RR_PROPERTY_RANDR_EDID	= "EDID";
-enum RR_PROPERTY_SIGNAL_FORMAT = "SignalFormat";
-enum RR_PROPERTY_SIGNAL_PROPERTIES = "SignalProperties";
-enum RR_PROPERTY_CONNECTOR_TYPE	= "ConnectorType";
-enum RR_PROPERTY_CONNECTOR_NUMBER = "ConnectorNumber";
-enum RR_PROPERTY_COMPATIBILITY_LIST	= "CompatibilityList";
-enum RR_PROPERTY_CLONE_LIST	= "CloneList";
-enum RR_PROPERTY_BORDER		= "Border";
-enum RR_PROPERTY_BORDER_DIMENSIONS = "BorderDimensions";
+immutable char* RR_PROPERTY_BACKLIGHT	= "Backlight";
+immutable char* RR_PROPERTY_RANDR_EDID	= "EDID";
+immutable char* RR_PROPERTY_SIGNAL_FORMAT = "SignalFormat";
+immutable char* RR_PROPERTY_SIGNAL_PROPERTIES = "SignalProperties";
+immutable char* RR_PROPERTY_CONNECTOR_TYPE	= "ConnectorType";
+immutable char* RR_PROPERTY_CONNECTOR_NUMBER = "ConnectorNumber";
+immutable char* RR_PROPERTY_COMPATIBILITY_LIST	= "CompatibilityList";
+immutable char* RR_PROPERTY_CLONE_LIST	= "CloneList";
+immutable char* RR_PROPERTY_BORDER		= "Border";
+immutable char* RR_PROPERTY_BORDER_DIMENSIONS = "BorderDimensions";
 
 enum RR_Capability_None = 0;
 enum RR_Capability_SourceOutput = 1;

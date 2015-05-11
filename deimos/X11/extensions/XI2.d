@@ -93,8 +93,8 @@ enum {
     XIDetachSlave  = 4
 }
 
-const int XIAttachToMaster = 1;
-const int XIFloating       = 2;
+enum XIAttachToMaster = 1;
+enum XIFloating       = 2;
 
 /* Valuator modes */
 enum {
@@ -120,7 +120,7 @@ enum {
 
 /* Device event flags (common) */
 /* Device event flags (key events only) */
-const int XIKeyRepeat = 1 << 16;
+enum XIKeyRepeat = 1 << 16;
 /* Device event flags (pointer events only) */
 
 /* XI2 event mask macros */

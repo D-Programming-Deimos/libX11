@@ -96,26 +96,26 @@ alias CARD8     BOOL;
  * definitions for sign-extending bitfields on 64-bit architectures
  */
 static if( WORD64 ){
-    template cvtINT8toInt(INT8 val)     {   const int       cvtINT8toInt    = cast(int)     (val & 0x00000080) ? (val | 0xffffffffffffff00) : val; }
-    template cvtINT16toInt(INT16 val)   {   const int       cvtINT16toInt   = cast(int)     (val & 0x00008000) ? (val | 0xffffffffffff0000) : val; }
-    template cvtINT32toInt(INT32 val)   {   const int       cvtINT32toInt   = cast(int)     (val & 0x80000000) ? (val | 0xffffffff00000000) : val; }
-    template cvtINT8toShort(INT8 val)   {   const short     cvtINT8toShort  = cast(short)   cvtINT8toInt(val); }
-    template cvtINT16toShort(INT16 val) {   const short     cvtINT16toShort = cast(short)   cvtINT16toInt(val); }
-    template cvtINT32toShort(INT32 val) {   const short     cvtINT32toShort = cast(short)   cvtINT32toInt(val); }
-    template cvtINT8toLong(INT8 val)    {   const c_long    cvtINT8toLong   = cast(c_long)  cvtINT8toInt(val); }
-    template cvtINT16toLong(INT16 val)  {   const c_long    cvtINT16toLong  = cast(c_long)  cvtINT16toInt(val); }
-    template cvtINT32toLong(INT32 val)  {   const c_long    cvtINT32toLong  = cast(c_long)  cvtINT32toInt(val); }
+    template cvtINT8toInt(INT8 val)     {   enum cvtINT8toInt    = cast(int)     (val & 0x00000080) ? (val | 0xffffffffffffff00) : val; }
+    template cvtINT16toInt(INT16 val)   {   enum cvtINT16toInt   = cast(int)     (val & 0x00008000) ? (val | 0xffffffffffff0000) : val; }
+    template cvtINT32toInt(INT32 val)   {   enum cvtINT32toInt   = cast(int)     (val & 0x80000000) ? (val | 0xffffffff00000000) : val; }
+    template cvtINT8toShort(INT8 val)   {   enum cvtINT8toShort  = cast(short)   cvtINT8toInt(val); }
+    template cvtINT16toShort(INT16 val) {   enum cvtINT16toShort = cast(short)   cvtINT16toInt(val); }
+    template cvtINT32toShort(INT32 val) {   enum cvtINT32toShort = cast(short)   cvtINT32toInt(val); }
+    template cvtINT8toLong(INT8 val)    {   enum cvtINT8toLong   = cast(c_long)  cvtINT8toInt(val); }
+    template cvtINT16toLong(INT16 val)  {   enum cvtINT16toLong  = cast(c_long)  cvtINT16toInt(val); }
+    template cvtINT32toLong(INT32 val)  {   enum cvtINT32toLong  = cast(c_long)  cvtINT32toInt(val); }
 }
 else{ /* WORD64 and UNSIGNEDBITFIELDS */
-    template cvtINT8toInt(INT8 val)     {   const int       cvtINT8toInt    = cast(int)     val; }
-    template cvtINT16toInt(INT16 val)   {   const int       cvtINT16toInt   = cast(int)     val; }
-    template cvtINT32toInt(INT32 val)   {   const int       cvtINT32toInt   = cast(int)     val; }
-    template cvtINT8toShort(INT8 val)   {   const short     cvtINT8toShort  = cast(short)   val; }
-    template cvtINT16toShort(INT16 val) {   const short     cvtINT16toShort = cast(short)   val; }
-    template cvtINT32toShort(INT32 val) {   const short     cvtINT32toShort = cast(short)   val; }
-    template cvtINT8toLong(INT8 val)    {   const c_long    cvtINT8toLong   = cast(c_long)  val; }
-    template cvtINT16toLong(INT16 val)  {   const c_long    cvtINT16toLong  = cast(c_long)  val; }
-    template cvtINT32toLong(INT32 val)  {   const c_long    cvtINT32toLong  = cast(c_long)  val; }
+    template cvtINT8toInt(INT8 val)     {   enum cvtINT8toInt    = cast(int)     val; }
+    template cvtINT16toInt(INT16 val)   {   enum cvtINT16toInt   = cast(int)     val; }
+    template cvtINT32toInt(INT32 val)   {   enum cvtINT32toInt   = cast(int)     val; }
+    template cvtINT8toShort(INT8 val)   {   enum cvtINT8toShort  = cast(short)   val; }
+    template cvtINT16toShort(INT16 val) {   enum cvtINT16toShort = cast(short)   val; }
+    template cvtINT32toShort(INT32 val) {   enum cvtINT32toShort = cast(short)   val; }
+    template cvtINT8toLong(INT8 val)    {   enum cvtINT8toLong   = cast(c_long)  val; }
+    template cvtINT16toLong(INT16 val)  {   enum cvtINT16toLong  = cast(c_long)  val; }
+    template cvtINT32toLong(INT32 val)  {   enum cvtINT32toLong  = cast(c_long)  val; }
 }
 
 
@@ -133,3 +133,6 @@ else{/* else not MUSTCOPY, this is used for 32-bit machines */
      */
     T NEXTPTR(T)(T p){ const T NEXTPTR = p + 1; }
 }/* MUSTCOPY - used machines whose C structs don't line up with proto */
+
+
+alias wchar_t = dchar;

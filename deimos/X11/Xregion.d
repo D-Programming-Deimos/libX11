@@ -19,10 +19,10 @@ struct RECTANGLE{
 alias RECTANGLE     RectangleRec;
 alias RECTANGLE*    RectanglePtr;
 
-const int TRUE      = 1;
-const int FALSE     = 0;
-const int MAXSHORT  = 32767;
-const int MINSHORT  = -MAXSHORT;
+enum TRUE      = 1;
+enum FALSE     = 0;
+enum MAXSHORT  = 32767;
+enum MINSHORT  = -MAXSHORT;
 
 int MAX(int a, int b) { return (a < b) ? b : a; }
 int MIN(int a, int b) { return (a > b) ? b : a; }
@@ -137,7 +137,7 @@ bool INBOX(Box* r, short x, short y){
  * number of points to buffer before sending them off
  * to scanlines() :  Must be an even number
  */
-const int NUMPTSTOBUFFER = 200;
+enum NUMPTSTOBUFFER = 200;
 
 /*
  * used to allocate buffers for points and link

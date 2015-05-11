@@ -13,14 +13,14 @@ extern (C) nothrow:
  * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
  * value (x, y, width, height) was found in the parsed string.
  */
-const int NoValue     = 0x0000;
-const int XValue      = 0x0001;
-const int YValue      = 0x0002;
-const int WidthValue  = 0x0004;
-const int HeightValue = 0x0008;
-const int AllValues   = 0x000F;
-const int XNegative   = 0x0010;
-const int YNegative   = 0x0020;
+enum NoValue     = 0x0000;
+enum XValue      = 0x0001;
+enum YValue      = 0x0002;
+enum WidthValue  = 0x0004;
+enum HeightValue = 0x0008;
+enum AllValues   = 0x000F;
+enum XNegative   = 0x0010;
+enum YNegative   = 0x0020;
 
 /*
  * new version containing base_width, base_height, and win_gravity fields;
@@ -48,18 +48,18 @@ struct XSizeHints {
  */
 
                                                         /* flags argument in size hints                                 */
-enum {
-    USPosition  = 1L << 0,                              /* user specified x, y                                          */
-    USSize      = 1L << 1,                              /* user specified width, height                                 */
+enum : c_ulong {
+    USPosition  = 1 << 0,                              /* user specified x, y                                          */
+    USSize      = 1 << 1,                              /* user specified width, height                                 */
 
-    PPosition   = 1L << 2,                              /* program specified position                                   */
-    PSize       = 1L << 3,                              /* program specified size                                       */
-    PMinSize    = 1L << 4,                              /* program specified minimum size                               */
-    PMaxSize    = 1L << 5,                              /* program specified maximum size                               */
-    PResizeInc  = 1L << 6,                              /* program specified resize increments                          */
-    PAspect     = 1L << 7,                              /* program specified min and max aspect ratios                  */
-    PBaseSize   = 1L << 8,                              /* program specified base for incrementing                      */
-    PWinGravity = 1L << 9                               /* program specified window gravity                             */
+    PPosition   = 1 << 2,                              /* program specified position                                   */
+    PSize       = 1 << 3,                              /* program specified size                                       */
+    PMinSize    = 1 << 4,                              /* program specified minimum size                               */
+    PMaxSize    = 1 << 5,                              /* program specified maximum size                               */
+    PResizeInc  = 1 << 6,                              /* program specified resize increments                          */
+    PAspect     = 1 << 7,                              /* program specified min and max aspect ratios                  */
+    PBaseSize   = 1 << 8,                              /* program specified base for incrementing                      */
+    PWinGravity = 1 << 9                               /* program specified window gravity                             */
 }
 
 /* obsolete */
@@ -80,16 +80,16 @@ struct XWMHints{
 }
 
                                                         /* definition for flags of XWMHints                             */
-enum {
-    InputHint           = (1L << 0),
-    StateHint           = (1L << 1),
-    IconPixmapHint      = (1L << 2),
-    IconWindowHint      = (1L << 3),
-    IconPositionHint    = (1L << 4),
-    IconMaskHint        = (1L << 5),
-    WindowGroupHint     = (1L << 6),
+enum : c_ulong {
+    InputHint           = (1 << 0),
+    StateHint           = (1 << 1),
+    IconPixmapHint      = (1 << 2),
+    IconWindowHint      = (1 << 3),
+    IconPositionHint    = (1 << 4),
+    IconMaskHint        = (1 << 5),
+    WindowGroupHint     = (1 << 6),
     AllHints            = (InputHint|StateHint|IconPixmapHint|IconWindowHint|IconPositionHint|IconMaskHint|WindowGroupHint),
-    XUrgencyHint        = (1L << 8)
+    XUrgencyHint        = (1 << 8)
 }
 
                                                         /* definitions for initial window state                         */
@@ -121,9 +121,9 @@ struct XTextProperty{
     c_ulong nitems;                                     /* number of data items in value                                */
 }
 
-const int XNoMemory             = -1;
-const int XLocaleNotSupported   = -2;
-const int XConverterNotFound    = -3;
+enum XNoMemory             = -1;
+enum XLocaleNotSupported   = -2;
+enum XConverterNotFound    = -3;
 
 alias int XICCEncodingStyle;
 enum {
@@ -340,7 +340,7 @@ struct XStandardColormap{
     XID         killid;                                 /* added by ICCCM version 1                                     */
 }
 
-const XID ReleaseByFreeingColormap = 1L;                /* for killid field above                                       */
+const XID ReleaseByFreeingColormap = 1;                /* for killid field above                                       */
 
 
 /*
@@ -756,7 +756,7 @@ extern int XmbTextListToTextProperty(
 
 extern int XwcTextListToTextProperty(
     Display*            display,
-    wchar**             list,
+    wchar_t**           list,
     int                 count,
     XICCEncodingStyle   style,
     XTextProperty*      text_prop_return
@@ -771,7 +771,7 @@ extern int Xutf8TextListToTextProperty(
 );
 
 extern void XwcFreeStringList(
-    wchar**             list
+    wchar_t**           list
 );
 
 extern Status XTextPropertyToStringList(
@@ -790,7 +790,7 @@ extern int XmbTextPropertyToTextList(
 extern int XwcTextPropertyToTextList(
     Display*                display,
     const XTextProperty*    text_prop,
-    wchar***                list_return,
+    wchar_t***              list_return,
     int*                    count_return
 );
 
