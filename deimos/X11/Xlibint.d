@@ -7,7 +7,8 @@ module deimos.X11.Xlibint;
  *  Warning, there be dragons here....
  */
 import std.stdio;
-import std.c.string : memcpy;
+import core.stdc.string : memcpy;
+import core.stdc.stdio : fopen;
 import core.stdc.config;
 import core.stdc.stdlib : free, malloc, calloc, realloc;
 
@@ -1266,8 +1267,8 @@ extern int _XTextHeight16(
     int                                                 /* count                                                        */
 );
 
-alias std.stdio.File.open   _XOpenFile;
-alias std.stdio.fopen       _XFopenFile;
+alias std.stdio.File.open    _XOpenFile;
+alias core.stdc.stdio.fopen  _XFopenFile;
 
                                                         /* EvToWire.c                                                   */
 extern Status _XEventToWire(Display* dpy, XEvent* re, xEvent* event);

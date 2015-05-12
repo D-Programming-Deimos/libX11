@@ -133,6 +133,3 @@ else{/* else not MUSTCOPY, this is used for 32-bit machines */
      */
     T NEXTPTR(T)(T p){ const T NEXTPTR = p + 1; }
 }/* MUSTCOPY - used machines whose C structs don't line up with proto */
-
-
-alias wchar_t = dchar;
