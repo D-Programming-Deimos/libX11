@@ -1,6 +1,7 @@
 module deimos.X11.Xutil;
 
 import core.stdc.config;
+import core.stdc.stddef : wchar_t;
 import deimos.X11.Xlib;
 import deimos.X11.X;
 import deimos.X11.Xregion;
@@ -564,7 +565,7 @@ extern Bool XPointInRegion(
 );
 
 extern Region XPolygonRegion(
-    deimos.X11.Xregion.XPoint*                                 /* points                                                       */,
+    deimos.X11.Xlib.XPoint*                             /* points                                                       */,
     int                                                 /* n                                                            */,
     int                                                 /* fill_rule                                                    */
 );

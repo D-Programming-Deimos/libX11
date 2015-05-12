@@ -1,6 +1,7 @@
 module deimos.X11.Xlib;
 import core.stdc.config;
-import std.c.stdarg;
+import core.stdc.stddef : wchar_t;
+//import core.stdc.stdarg;
 import deimos.X11.X;
 
 extern (C) nothrow:
@@ -1129,7 +1130,7 @@ enum XLookupChars                      = 2;
 enum XLookupKeySym                     = 3;
 enum XLookupBoth                       = 4;
 
-void* XVaNestedList;
+alias XVaNestedList = void*;
 
 struct XIMCallback{
     XPointer client_data;
