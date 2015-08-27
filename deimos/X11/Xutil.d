@@ -71,7 +71,7 @@ c_long PAllHints = (PPosition|PSize|PMinSize|PMaxSize|PResizeInc|PAspect);
 struct XWMHints{
     c_long  flags;                                      /* marks which fields in this structure are defined             */
     Bool    input;                                      /* does this application rely on the window manager to get keyboard input? */
-    int     nitial_state;                               /* see below                                                    */
+    int     initial_state;                               /* see below                                                    */
     Pixmap  icon_pixmap;                                /* pixmap to be used as icon                                    */
     Window  icon_window;                                /* window to be used as icon                                    */
     int     icon_x, icon_y;                             /* initial position of icon                                     */
