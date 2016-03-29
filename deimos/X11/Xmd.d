@@ -51,7 +51,8 @@ alias _SIZEOF SIZEOF;
  * need them.  Note that bitfields are not guaranteed to be signed
  * (or even unsigned) according to ANSI C.
  */
-version( X86_64 ){
+static if (WORD64)
+{
     alias long INT64;
     alias c_ulong CARD64;
     //~ #  define B32 :32
@@ -59,10 +60,12 @@ version( X86_64 ){
     alias uint INT32;
     alias uint INT16;
 }
-else{
+else
+{
     //~ #  define B32
     //~ #  define B16
-    static if( LONG64 ){
+    static if (LONG64)
+    {
         alias c_long INT64;
         alias int INT32;
     }
@@ -73,18 +76,19 @@ else{
 
 alias byte    INT8;
 
-static if( LONG64 ){
+static if (LONG64)
+{
     alias c_ulong CARD64;
     alias uint CARD32;
 }
 else
     alias c_ulong CARD32;
 
-static if( !WORD64 && !LONG64 )
+static if (!WORD64 && !LONG64)
     alias ulong CARD64;
 
 alias ushort    CARD16;
-alias byte      CARD8;
+alias ubyte     CARD8;
 
 alias CARD32    BITS32;
 alias CARD16    BITS16;
