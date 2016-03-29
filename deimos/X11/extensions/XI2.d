@@ -124,21 +124,10 @@ enum XIKeyRepeat = 1 << 16;
 /* Device event flags (pointer events only) */
 
 /* XI2 event mask macros */
-template XISetMask(string ptr, int event){
-    const ubyte XISetMask = cast(ubyte)(ptr[(event)>>3] |=  (1 << ((event) & 7)));
-}
-
-template XIClearMask(string ptr, int event){
-    const ubyte XIClearMask = cast(ubyte)(ptr[(event)>>3] &= ~(1 << ((event) & 7)));
-}
-
-template XIMaskIsSet(string ptr, int event){
-    const ubyte XIMaskIsSet = cast(ubyte)(ptr[(event)>>3] &   (1 << ((event) & 7)));
-}
-
-template XIMaskLen(int event){
-    const ubyte XIMaskLen = (((event) >> 3) + 1);
-}
+ubyte XISetMask  (ubyte[] ptr, int event) { return  ptr[event>>3] |=  (1 << (event & 7)); }
+ubyte XIClearMask(ubyte[] ptr, int event) { return  ptr[event>>3] &= ~(1 << (event & 7)); }
+bool  XIMaskIsSet(ubyte[] ptr, int event) { return (ptr[event>>3] &   (1 << (event & 7))) != 0; }
+int   XIMaskLen  (int event) { return (event>>3) + 1; }
 
 /* Fake device ID's for event selection */
 enum {
