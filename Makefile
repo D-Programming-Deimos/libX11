@@ -21,6 +21,7 @@ HEADERS             = $(patsubst %.d,$(IMPORT_PATH)$(PATH_SEP)%.di,  $(SOURCES))
 DOCUMENTATIONS      = $(patsubst %.d,$(DOC_PATH)$(PATH_SEP)%.html,   $(SOURCES))
 DDOCUMENTATIONS     = $(patsubst %.d,$(DDOC_PATH)$(PATH_SEP)%.html,  $(SOURCES))
 DDOC_FLAGS          = $(foreach macro,$(DDOCFILES), $(DDOC_MACRO)$(macro))
+DIRECTORIES         = $(sort $(foreach f,$(OBJECTS) $(PICOBJECTS) $(HEADERS) $(DOCUMENTATIONS) $(DDOCUMENTATIONS),$(dir $(f))))
 define make-lib
 	$(MKDIR) $(DLIB_PATH)
 	$(AR) rcs $(DLIB_PATH)$(PATH_SEP)$@ $^
@@ -31,6 +32,7 @@ endef
 all: static-lib header doc pkgfile
 	@echo ------------------ Building $^ done
 
+.SECONDEXPANSION:
 .PHONY : pkgfile
 .PHONY : doc
 .PHONY : ddoc
@@ -85,24 +87,28 @@ $(SONAME): $(PICOBJECTS)
 	$(MKDIR) $(DLIB_PATH)
 	$(CC) -shared -Wl,-soname,$@.$(VERSION) -o $(DLIB_PATH)$(PATH_SEP)$@.$(VERSION) $^
 
+# create directories
+$(DIRECTORIES):
+	$(MKDIR) $@
+
 # create object files
-$(BUILD_PATH)$(PATH_SEP)%.o : %.d
+$(BUILD_PATH)$(PATH_SEP)%.o : %.d | $$(dir $$@)
 	$(DC) $(DCFLAGS) $(DCFLAGS_LINK) $(DCFLAGS_IMPORT) -c $< $(OUTPUT)$@
 
 # create shared object files
-$(BUILD_PATH)$(PATH_SEP)%.pic.o : %.d
+$(BUILD_PATH)$(PATH_SEP)%.pic.o : %.d | $$(dir $$@)
 	$(DC) $(DCFLAGS) $(DCFLAGS_LINK) $(FPIC) $(DCFLAGS_IMPORT) -c $< $(OUTPUT)$@
 
 # Generate Header files
-$(IMPORT_PATH)$(PATH_SEP)%.di : %.d
+$(IMPORT_PATH)$(PATH_SEP)%.di : %.d | $$(dir $$@)
 	$(DC) $(DCFLAGS) $(DCFLAGS_LINK) $(DCFLAGS_IMPORT) -c $(NO_OBJ) $< $(HF)$@
 
 # Generate Documentation
-$(DOC_PATH)$(PATH_SEP)%.html : %.d
+$(DOC_PATH)$(PATH_SEP)%.html : %.d | $$(dir $$@)
 	$(DC) $(DCFLAGS) $(DCFLAGS_LINK) $(DCFLAGS_IMPORT) -c $(NO_OBJ)  $< $(DF)$@
 
 # Generate ddoc Documentation
-$(DDOC_PATH)$(PATH_SEP)%.html : %.d
+$(DDOC_PATH)$(PATH_SEP)%.html : %.d | $$(dir $$@)
 	$(DC) $(DCFLAGS) $(DCFLAGS_LINK) $(DCFLAGS_IMPORT) -c $(NO_OBJ) $(DDOC_FLAGS) $< $(DF)$@
 
 ############# CLEAN #############
