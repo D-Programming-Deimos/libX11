@@ -63,8 +63,8 @@ endif
 
 # Define flag for gdc other
 ifeq ($(DC),gdc)
-    DCFLAGS    = -O2 
-    LINKERFLAG= -Xlinker
+    DCFLAGS    = -O2
+    LINKERFLAG= -Xlinker 
     OUTPUT    = -o
     HF        = -fintfc-file=
     DF        = -fdoc-file=
