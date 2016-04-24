@@ -152,9 +152,6 @@ clean-pkgfile:
 
 ############# INSTALL #############
 
-install: install-static-lib install-doc install-header install-pkgfile
-	@echo ------------------ Installing $^ done
-	
 install: install-shared-lib install-doc install-header install-pkgfile
 	@echo ------------------ Installing $^ done
 
