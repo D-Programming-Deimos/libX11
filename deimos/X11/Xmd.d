@@ -51,7 +51,7 @@ alias _SIZEOF SIZEOF;
  * need them.  Note that bitfields are not guaranteed to be signed
  * (or even unsigned) according to ANSI C.
  */
-version( X86_64 ){
+version( WORD64 ){
     alias long INT64;
     alias c_ulong CARD64;
     //~ #  define B32 :32
