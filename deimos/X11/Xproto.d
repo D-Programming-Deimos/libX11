@@ -170,19 +170,20 @@ enum sz_xChangeKeyboardMappingReq      = 8;
 we must redefine the following types in terms of Xmd.h's types, which may
 include bit fields.  All of these are #undef'd at the end of this file,
 restoring the definitions in X.h.  */
-
-alias CARD32    Window;
-alias CARD32    Drawable;
-alias CARD32    Font;
-alias CARD32    Pixmap;
-alias CARD32    Cursor;
-alias CARD32    Colormap;
-alias CARD32    GContext;
-alias CARD32    Atom;
-alias CARD32    VisualID;
-alias CARD32    Time;
-alias CARD8     KeyCode;
-alias CARD32    KeySym;
+private {
+alias CARD32    Xproto_Window;
+alias CARD32    Xproto_Drawable;
+alias CARD32    Xproto_Font;
+alias CARD32    Xproto_Pixmap;
+alias CARD32    Xproto_Cursor;
+alias CARD32    Xproto_Colormap;
+alias CARD32    Xproto_GContext;
+alias CARD32    Xproto_Atom;
+alias CARD32    Xproto_VisualID;
+alias CARD32    Xproto_Time;
+alias CARD8     Xproto_KeyCode;
+alias CARD32    Xproto_KeySym;
+}
 
 enum X_TCP_PORT = 6000;                            /* add display number                                           */
 
@@ -228,7 +229,7 @@ struct xConnSetup{
     CARD8   bitmapBitOrder;                             /* LeastSignificant, MostSign...                                */
     CARD8   bitmapScanlineUnit,                         /* 8, 16, 32                                                    */
             bitmapScanlinePad;                          /* 8, 16, 32                                                    */
-    KeyCode minKeyCode, maxKeyCode;
+    Xproto_KeyCode minKeyCode, maxKeyCode;
     CARD32  pad2;
 }
 
@@ -250,7 +251,7 @@ struct xDepth{
 }
 
 struct xVisualType{
-    VisualID visualID;
+    Xproto_VisualID visualID;
     CARD8 c_class;
     CARD8 bitsPerRGB;
     CARD16 colormapEntries;
@@ -259,14 +260,14 @@ struct xVisualType{
 }
 
 struct xWindowRoot {
-    Window         windowId;
-    Colormap       defaultColormap;
+    Xproto_Window         windowId;
+    Xproto_Colormap       defaultColormap;
     CARD32         whitePixel, blackPixel;
     CARD32         currentInputMask;
     CARD16         pixWidth, pixHeight;
     CARD16         mmWidth, mmHeight;
     CARD16         minInstalledMaps, maxInstalledMaps;
-    VisualID       rootVisualID;
+    Xproto_VisualID       rootVisualID;
     CARD8          backingStore;
     BOOL           saveUnders;
     CARD8          rootDepth;
@@ -297,7 +298,7 @@ struct xCharInfo{
 }
 
 struct xFontProp{
-    Atom    name;
+    Xproto_Atom    name;
     CARD32  value;
 }
 
@@ -352,7 +353,7 @@ struct xGetWindowAttributesReply{
     CARD8 backingStore;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* NOT 0; this is an extra-large reply                          */
-    VisualID visualID;
+    Xproto_VisualID visualID;
     CARD16 c_class;
     CARD8 bitGravity;
     CARD8 winGravity;
@@ -362,7 +363,7 @@ struct xGetWindowAttributesReply{
     BOOL mapInstalled;
     CARD8 mapState;
     BOOL c_override;
-    Colormap colormap;
+    Xproto_Colormap colormap;
     CARD32 allEventMasks;
     CARD32 yourEventMask;
     CARD16 doNotPropagateMask;
@@ -374,7 +375,7 @@ struct xGetGeometryReply{
     CARD8 depth;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Window root;
+    Xproto_Window root;
     INT16 x, y;
     CARD16 width, height;
     CARD16 borderWidth;
@@ -388,7 +389,7 @@ struct xQueryTreeReply{
     BYTE pad1;
     CARD16 sequenceNumber;
     CARD32 length;
-    Window root, parent;
+    Xproto_Window root, parent;
     CARD16 nChildren;
     CARD16 pad2;
     CARD32 pad3;
@@ -401,7 +402,7 @@ struct xInternAtomReply{
     BYTE pad1;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Atom atom;
+    Xproto_Atom atom;
     CARD32 pad2;
     CARD32 pad3;
     CARD32 pad4;
@@ -428,7 +429,7 @@ struct xGetPropertyReply{
     CARD8 format;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* of additional bytes                                          */
-    Atom propertyType;
+    Xproto_Atom propertyType;
     CARD32 bytesAfter;
     CARD32 nItems;                                      /* # of 8, 16, or 32-bit entities in reply                      */
     CARD32 pad1;
@@ -455,7 +456,7 @@ struct xGetSelectionOwnerReply{
     BYTE pad1;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Window owner;
+    Xproto_Window owner;
     CARD32 pad2;
     CARD32 pad3;
     CARD32 pad4;
@@ -483,7 +484,7 @@ struct xQueryPointerReply{
     BOOL sameScreen;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Window root, child;
+    Xproto_Window root, child;
     INT16 rootX, rootY, winX, winY;
     CARD16 mask;
     CARD16 pad1;
@@ -508,7 +509,7 @@ struct xTranslateCoordsReply{
     BOOL sameScreen;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Window child;
+    Xproto_Window child;
     INT16 dstX, dstY;
     CARD32 pad2;
     CARD32 pad3;
@@ -521,7 +522,7 @@ struct xGetInputFocusReply{
     CARD8 revertTo;
     CARD16 sequenceNumber;
     CARD32 length;                                      /* 0                                                            */
-    Window focus;
+    Xproto_Window focus;
     CARD32 pad1;
     CARD32 pad2;
     CARD32 pad3;
@@ -663,7 +664,7 @@ struct xGetImageReply{
     CARD8 depth;
     CARD16 sequenceNumber;
     CARD32 length;
-    VisualID visual;
+    Xproto_VisualID visual;
     CARD32 pad3;
     CARD32 pad4;
     CARD32 pad5;
@@ -951,8 +952,8 @@ struct _xEvent {
         }
         struct keyButtonPointer{
             CARD32 pad00;
-            Time time;
-            Window root, event, child;
+            Xproto_Time time;
+            Xproto_Window root, event, child;
             INT16 rootX, rootY, eventX, eventY;
             KeyButMask state;
             BOOL sameScreen;
@@ -960,8 +961,8 @@ struct _xEvent {
         }
         struct enterLeave{
             CARD32 pad00;
-            Time time;
-            Window root, event, child;
+            Xproto_Time time;
+            Xproto_Window root, event, child;
             INT16 rootX, rootY, eventX, eventY;
             KeyButMask state;
             BYTE mode;                                  /* really XMode                                                 */
@@ -969,20 +970,20 @@ struct _xEvent {
         }
         struct focus{
             CARD32 pad00;
-            Window window;
+            Xproto_Window window;
             BYTE mode;                                  /* really XMode                                                 */
             BYTE pad1, pad2, pad3;
         }
         struct expose{
             CARD32 pad00;
-            Window window;
+            Xproto_Window window;
             CARD16 x, y, width, height;
             CARD16 count;
             CARD16 pad2;
         }
         struct graphicsExposure{
             CARD32 pad00;
-            Drawable drawable;
+            Xproto_Drawable drawable;
             CARD16 x, y, width, height;
             CARD16 minorEvent;
             CARD16 count;
@@ -991,20 +992,20 @@ struct _xEvent {
         }
         struct noExposure{
             CARD32 pad00;
-            Drawable drawable;
+            Xproto_Drawable drawable;
             CARD16 minorEvent;
             BYTE majorEvent;
             BYTE bpad;
         }
         struct visibility{
             CARD32 pad00;
-            Window window;
+            Xproto_Window window;
             CARD8 state;
             BYTE pad1, pad2, pad3;
         }
         struct createNotify{
             CARD32 pad00;
-            Window parent, window;
+            Xproto_Window parent, window;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             BOOL c_override;
@@ -1020,34 +1021,34 @@ struct _xEvent {
      */
         struct destroyNotify{
             CARD32 pad00;
-            Window event, window;
+            Xproto_Window event, window;
         }
         struct unmapNotify{
             CARD32 pad00;
-            Window event, window;
+            Xproto_Window event, window;
             BOOL fromConfigure;
             BYTE pad1, pad2, pad3;
         }
         struct mapNotify{
             CARD32 pad00;
-            Window event, window;
+            Xproto_Window event, window;
             BOOL c_override;
             BYTE pad1, pad2, pad3;
         }
         struct mapRequest{
             CARD32 pad00;
-            Window parent, window;
+            Xproto_Window parent, window;
         }
         struct reparent{
             CARD32 pad00;
-            Window event, window, parent;
+            Xproto_Window event, window, parent;
             INT16 x, y;
             BOOL c_override;
             BYTE pad1, pad2, pad3;
         }
         struct configureNotify{
             CARD32 pad00;
-            Window event, window, aboveSibling;
+            Xproto_Window event, window, aboveSibling;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             BOOL c_override;
@@ -1055,7 +1056,7 @@ struct _xEvent {
         }
         struct configureRequest{
             CARD32 pad00;
-            Window parent, window, sibling;
+            Xproto_Window parent, window, sibling;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             CARD16 valueMask;
@@ -1063,54 +1064,54 @@ struct _xEvent {
         }
         struct gravity{
                 CARD32 pad00;
-            Window event, window;
+            Xproto_Window event, window;
             INT16 x, y;
             CARD32 pad1, pad2, pad3, pad4;
         }
         struct resizeRequest{
             CARD32 pad00;
-            Window window;
+            Xproto_Window window;
             CARD16 width, height;
         }
         struct circulate{
     /* The event field in the circulate record is really the parent when this
        is used as a CirculateRequest instead of a CirculateNotify */
             CARD32 pad00;
-            Window event, window, parent;
+            Xproto_Window event, window, parent;
             BYTE place;                                 /* Top or Bottom                                                */
             BYTE pad1, pad2, pad3;
         }
         struct property{
             CARD32 pad00;
-            Window window;
-            Atom atom;
-            Time time;
+            Xproto_Window window;
+            Xproto_Atom atom;
+            Xproto_Time time;
             BYTE state;                                 /* NewValue or Deleted                                          */
             BYTE pad1;
             CARD16 pad2;
         }
         struct selectionClear{
             CARD32 pad00;
-            Time time;
-            Window window;
-            Atom atom;
+            Xproto_Time time;
+            Xproto_Window window;
+            Xproto_Atom atom;
         }
         struct selectionRequest{
             CARD32 pad00;
-            Time time;
-            Window owner, requestor;
-            Atom selection, target, property;
+            Xproto_Time time;
+            Xproto_Window owner, requestor;
+            Xproto_Atom selection, target, property;
         }
         struct selectionNotify{
             CARD32 pad00;
-            Time time;
-            Window requestor;
-            Atom selection, target, property;
+            Xproto_Time time;
+            Xproto_Window requestor;
+            Xproto_Atom selection, target, property;
         }
         struct colormap{
             CARD32 pad00;
-            Window window;
-            Colormap colormap;
+            Xproto_Window window;
+            Xproto_Colormap colormap;
             BOOL c_new;
             BYTE state;                                 /* Installed or UnInstalled                                     */
             BYTE pad1, pad2;
@@ -1118,16 +1119,16 @@ struct _xEvent {
         struct mappingNotify{
             CARD32 pad00;
             CARD8 request;
-            KeyCode firstKeyCode;
+            Xproto_KeyCode firstKeyCode;
             CARD8 count;
             BYTE pad1;
         }
         struct clientMessage{
             CARD32 pad00;
-            Window window;
+            Xproto_Window window;
             union u{
                 struct l{
-                    Atom type;
+                    Xproto_Atom type;
                     INT32 longs0;
                     INT32 longs1;
                     INT32 longs2;
@@ -1135,7 +1136,7 @@ struct _xEvent {
                     INT32 longs4;
                 }
                 struct s{
-                    Atom type;
+                    Xproto_Atom type;
                     INT16 shorts0;
                     INT16 shorts1;
                     INT16 shorts2;
@@ -1148,7 +1149,7 @@ struct _xEvent {
                     INT16 shorts9;
                 }
                 struct b{
-                    Atom type;
+                    Xproto_Atom type;
                     INT8[20] bytes;
                 }
             }
@@ -1264,24 +1265,24 @@ alias _xReq xReq;
  *****************************************************************/
 
 /* ResourceReq is used for any request which has a resource ID
-   (or Atom or Time) as its one and only argument.  */
+   (or Xproto_Atom or Xproto_Time) as its one and only argument.  */
 
 struct xResourceReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    CARD32 id;                                          /* a Window, Drawable, Font, GContext, Pixmap, etc.             */
+    CARD32 id;                                          /* a Xproto_Window, Xproto_Drawable, Xproto_Font, Xproto_GContext, Xproto_Pixmap, etc.             */
 }
 
 struct xCreateWindowReq{
     CARD8 reqType;
     CARD8 depth;
     CARD16 length;
-    Window wid, parent;
+    Xproto_Window wid, parent;
     INT16 x, y;
     CARD16 width, height, borderWidth;
     CARD16 c_class;
-    VisualID visual;
+    Xproto_VisualID visual;
     CARD32 mask;
 }
 
@@ -1289,7 +1290,7 @@ struct xChangeWindowAttributesReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
     CARD32 valueMask;
 }
 
@@ -1297,14 +1298,14 @@ struct xChangeSaveSetReq{
     CARD8 reqType;
     BYTE mode;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
 }
 
 struct xReparentWindowReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window, parent;
+    Xproto_Window window, parent;
     INT16 x, y;
 }
 
@@ -1312,7 +1313,7 @@ struct xConfigureWindowReq{
     CARD8 reqType;
     CARD8 pad;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
     CARD16 mask;
     CARD16 pad2;
 }
@@ -1321,7 +1322,7 @@ struct xCirculateWindowReq{
     CARD8 reqType;
     CARD8 direction;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
 }
 
 struct xInternAtomReq{                                  /* followed by padded string                                    */
@@ -1336,8 +1337,8 @@ struct xChangePropertyReq{
     CARD8 reqType;
     CARD8 mode;
     CARD16 length;
-    Window window;
-    Atom property, type;
+    Xproto_Window window;
+    Xproto_Atom property, type;
     CARD8 format;
     BYTE[3] pad;
     CARD32 nUnits;                                  /* length of stuff following, depends on format                 */
@@ -1347,16 +1348,16 @@ struct xDeletePropertyReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window;
-    Atom property;
+    Xproto_Window window;
+    Xproto_Atom property;
 }
 
 struct xGetPropertyReq{
     CARD8 reqType;
     BOOL c_delete;
     CARD16 length;
-    Window window;
-    Atom property, type;
+    Xproto_Window window;
+    Xproto_Atom property, type;
     CARD32 longOffset;
     CARD32 longLength;
 }
@@ -1365,18 +1366,18 @@ struct xSetSelectionOwnerReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window;
-    Atom selection;
-    Time time;
+    Xproto_Window window;
+    Xproto_Atom selection;
+    Xproto_Time time;
 }
 
 struct xConvertSelectionReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window requestor;
-    Atom selection, target, property;
-    Time time;
+    Xproto_Window requestor;
+    Xproto_Atom selection, target, property;
+    Xproto_Time time;
 }
 
 version( X86_64 ){
@@ -1384,7 +1385,7 @@ version( X86_64 ){
         CARD8 reqType;
         BOOL propagate;
         CARD16 length;
-        Window destination;
+        Xproto_Window destination;
         CARD32 eventMask;
         BYTE[SIZEOF!xEvent()] eventdata;   /* the structure should have been quad-aligned                  */
     }
@@ -1394,7 +1395,7 @@ else{
         CARD8 reqType;
         BOOL propagate;
         CARD16 length;
-        Window destination;
+        Xproto_Window destination;
         CARD32 eventMask;
         xEvent event;
     }
@@ -1404,23 +1405,23 @@ struct xGrabPointerReq{
     CARD8 reqType;
     BOOL ownerEvents;
     CARD16 length;
-    Window grabWindow;
+    Xproto_Window grabWindow;
     CARD16 eventMask;
     BYTE pointerMode, keyboardMode;
-    Window confineTo;
-    Cursor cursor;
-    Time time;
+    Xproto_Window confineTo;
+    Xproto_Cursor cursor;
+    Xproto_Time time;
 }
 
 struct xGrabButtonReq{
     CARD8 reqType;
     BOOL ownerEvents;
     CARD16 length;
-    Window grabWindow;
+    Xproto_Window grabWindow;
     CARD16 eventMask;
     BYTE pointerMode, keyboardMode;
-    Window confineTo;
-    Cursor cursor;
+    Xproto_Window confineTo;
+    Xproto_Cursor cursor;
     CARD8 button;
     BYTE pad;
     CARD16 modifiers;
@@ -1430,7 +1431,7 @@ struct xUngrabButtonReq{
     CARD8 reqType;
     CARD8 button;
     CARD16 length;
-    Window grabWindow;
+    Xproto_Window grabWindow;
     CARD16 modifiers;
     CARD16 pad;
 }
@@ -1439,8 +1440,8 @@ struct xChangeActivePointerGrabReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Cursor cursor;
-    Time time;
+    Xproto_Cursor cursor;
+    Xproto_Time time;
     CARD16 eventMask;
     CARD16 pad2;
 }
@@ -1449,8 +1450,8 @@ struct xGrabKeyboardReq{
     CARD8 reqType;
     BOOL ownerEvents;
     CARD16 length;
-    Window grabWindow;
-    Time time;
+    Xproto_Window grabWindow;
+    Xproto_Time time;
     BYTE pointerMode, keyboardMode;
     CARD16 pad;
 }
@@ -1459,7 +1460,7 @@ struct xGrabKeyReq{
     CARD8 reqType;
     BOOL ownerEvents;
     CARD16 length;
-    Window grabWindow;
+    Xproto_Window grabWindow;
     CARD16 modifiers;
     CARD8 key;
     BYTE pointerMode, keyboardMode;
@@ -1470,7 +1471,7 @@ struct xUngrabKeyReq{
     CARD8 reqType;
     CARD8 key;
     CARD16 length;
-    Window grabWindow;
+    Xproto_Window grabWindow;
     CARD16 modifiers;
     CARD16 pad;
 }
@@ -1479,22 +1480,22 @@ struct xAllowEventsReq{
     CARD8 reqType;
     CARD8 mode;
     CARD16 length;
-    Time time;
+    Xproto_Time time;
 }
 
 struct xGetMotionEventsReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window;
-    Time start, stop;
+    Xproto_Window window;
+    Xproto_Time start, stop;
 }
 
 struct xTranslateCoordsReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window srcWid, dstWid;
+    Xproto_Window srcWid, dstWid;
     INT16 srcX, srcY;
 }
 
@@ -1502,7 +1503,7 @@ struct xWarpPointerReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window srcWid, dstWid;
+    Xproto_Window srcWid, dstWid;
     INT16 srcX, srcY;
     CARD16 srcWidth, srcHeight;
     INT16 dstX, dstY;
@@ -1512,15 +1513,15 @@ struct xSetInputFocusReq{
     CARD8 reqType;
     CARD8 revertTo;
     CARD16 length;
-    Window focus;
-    Time time;
+    Xproto_Window focus;
+    Xproto_Time time;
 }
 
 struct xOpenFontReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Font fid;
+    Xproto_Font fid;
     CARD16 nbytes;
     BYTE pad1, pad2;                                    /* string follows on word boundary                              */
 }
@@ -1529,7 +1530,7 @@ struct xQueryTextExtentsReq{
     CARD8 reqType;
     BOOL oddLength;
     CARD16 length;
-    Font fid;
+    Xproto_Font fid;
 }
 
 struct xListFontsReq{
@@ -1554,8 +1555,8 @@ struct xCreatePixmapReq{
     CARD8 reqType;
     CARD8 depth;
     CARD16 length;
-    Pixmap pid;
-    Drawable drawable;
+    Xproto_Pixmap pid;
+    Xproto_Drawable drawable;
     CARD16 width, height;
 }
 
@@ -1563,8 +1564,8 @@ struct xCreateGCReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    GContext gc;
-    Drawable drawable;
+    Xproto_GContext gc;
+    Xproto_Drawable drawable;
     CARD32 mask;
 }
 
@@ -1572,7 +1573,7 @@ struct xChangeGCReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    GContext gc;
+    Xproto_GContext gc;
     CARD32 mask;
 }
 
@@ -1580,7 +1581,7 @@ struct xCopyGCReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    GContext srcGC, dstGC;
+    Xproto_GContext srcGC, dstGC;
     CARD32 mask;
 }
 
@@ -1588,7 +1589,7 @@ struct xSetDashesReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    GContext gc;
+    Xproto_GContext gc;
     CARD16 dashOffset;
     CARD16 nDashes;                                 /* length LISTofCARD8 of values following                       */
 }
@@ -1597,7 +1598,7 @@ struct xSetClipRectanglesReq{
     CARD8 reqType;
     BYTE ordering;
     CARD16 length;
-    GContext gc;
+    Xproto_GContext gc;
     INT16 xOrigin, yOrigin;
 }
 
@@ -1605,7 +1606,7 @@ struct xClearAreaReq{
     CARD8 reqType;
     BOOL exposures;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
     INT16 x, y;
     CARD16 width, height;
 }
@@ -1614,8 +1615,8 @@ struct xCopyAreaReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Drawable srcDrawable, dstDrawable;
-    GContext gc;
+    Xproto_Drawable srcDrawable, dstDrawable;
+    Xproto_GContext gc;
     INT16 srcX, srcY, dstX, dstY;
     CARD16 width, height;
 }
@@ -1624,8 +1625,8 @@ struct xCopyPlaneReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Drawable srcDrawable, dstDrawable;
-    GContext gc;
+    Xproto_Drawable srcDrawable, dstDrawable;
+    Xproto_GContext gc;
     INT16 srcX, srcY, dstX, dstY;
     CARD16 width, height;
     CARD32 bitPlane;
@@ -1635,8 +1636,8 @@ struct xPolyPointReq{
     CARD8 reqType;
     BYTE coordMode;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
 }
 
 alias xPolyPointReq xPolyLineReq;                       /* same request structure                                       */
@@ -1647,8 +1648,8 @@ struct xPolySegmentReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
 }
 
 alias xPolySegmentReq xPolyArcReq;
@@ -1660,8 +1661,8 @@ struct _FillPolyReq {
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
     BYTE shape;
     BYTE coordMode;
     CARD16 pad1;
@@ -1674,8 +1675,8 @@ struct _PutImageReq {
     CARD8 reqType;
     CARD8 format;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
     CARD16 width, height;
     INT16 dstX, dstY;
     CARD8 leftPad;
@@ -1688,7 +1689,7 @@ struct xGetImageReq{
     CARD8 reqType;
     CARD8 format;
     CARD16 length;
-    Drawable drawable;
+    Xproto_Drawable drawable;
     INT16 x, y;
     CARD16 width, height;
     CARD32 planeMask;
@@ -1700,8 +1701,8 @@ struct xPolyTextReq{
     CARD8 reqType;
     CARD8 pad;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
     INT16 x, y;                                 /* items (xTextElt) start after struct                          */
 }
 
@@ -1712,8 +1713,8 @@ struct xImageTextReq{
     CARD8 reqType;
     BYTE nChars;
     CARD16 length;
-    Drawable drawable;
-    GContext gc;
+    Xproto_Drawable drawable;
+    Xproto_GContext gc;
     INT16 x, y;
 }
 
@@ -1724,24 +1725,24 @@ struct xCreateColormapReq{
     CARD8 reqType;
     BYTE alloc;
     CARD16 length;
-    Colormap mid;
-    Window window;
-    VisualID visual;
+    Xproto_Colormap mid;
+    Xproto_Window window;
+    Xproto_VisualID visual;
 }
 
 struct xCopyColormapAndFreeReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap mid;
-    Colormap srcCmap;
+    Xproto_Colormap mid;
+    Xproto_Colormap srcCmap;
 }
 
 struct xAllocColorReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD16 red, green, blue;
     CARD16 pad2;
 }
@@ -1750,7 +1751,7 @@ struct xAllocNamedColorReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD16 nbytes;                                  /* followed by structure                                        */
     BYTE pad1, pad2;
 }
@@ -1759,7 +1760,7 @@ struct xAllocColorCellsReq{
     CARD8 reqType;
     BOOL contiguous;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD16 colors, planes;
 }
 
@@ -1767,7 +1768,7 @@ struct xAllocColorPlanesReq{
     CARD8 reqType;
     BOOL contiguous;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD16 colors, red, green, blue;
 }
 
@@ -1775,7 +1776,7 @@ struct xFreeColorsReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD32 planeMask;
 }
 
@@ -1783,14 +1784,14 @@ struct xStoreColorsReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
 }
 
 struct xStoreNamedColorReq{
     CARD8 reqType;
     CARD8 flags;                                        /* DoRed, DoGreen, DoBlue, as in xColorItem                     */
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD32 pixel;
     CARD16 nbytes;                                  /* number of name string bytes following structure              */
     BYTE pad1, pad2;
@@ -1800,14 +1801,14 @@ struct xQueryColorsReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
 }
 
 struct xLookupColorReq{                                 /* followed  by string of length len                            */
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Colormap cmap;
+    Xproto_Colormap cmap;
     CARD16 nbytes;                                  /* number of string bytes following structure                   */
     BYTE pad1, pad2;
 }
@@ -1816,8 +1817,8 @@ struct xCreateCursorReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Cursor cid;
-    Pixmap source, mask;
+    Xproto_Cursor cid;
+    Xproto_Pixmap source, mask;
     CARD16 foreRed, foreGreen, foreBlue;
     CARD16 backRed, backGreen, backBlue;
     CARD16 x, y;
@@ -1827,8 +1828,8 @@ struct xCreateGlyphCursorReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Cursor cid;
-    Font source, mask;
+    Xproto_Cursor cid;
+    Xproto_Font source, mask;
     CARD16 sourceChar, maskChar;
     CARD16 foreRed, foreGreen, foreBlue;
     CARD16 backRed, backGreen, backBlue;
@@ -1838,7 +1839,7 @@ struct xRecolorCursorReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Cursor cursor;
+    Xproto_Cursor cursor;
     CARD16 foreRed, foreGreen, foreBlue;
     CARD16 backRed, backGreen, backBlue;
 }
@@ -1847,7 +1848,7 @@ struct xQueryBestSizeReq{
     CARD8 reqType;
     CARD8 c_class;
     CARD16 length;
-    Drawable drawable;
+    Xproto_Drawable drawable;
     CARD16 width, height;
 }
 
@@ -1875,7 +1876,7 @@ struct xGetKeyboardMappingReq{
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    KeyCode firstKeyCode;
+    Xproto_KeyCode firstKeyCode;
     CARD8 count;
     CARD16 pad1;
 }
@@ -1884,7 +1885,7 @@ struct xChangeKeyboardMappingReq{
     CARD8 reqType;
     CARD8 keyCodes;
     CARD16 length;
-    KeyCode firstKeyCode;
+    Xproto_KeyCode firstKeyCode;
     CARD8 keySymsPerKeyCode;
     CARD16 pad1;
 }
@@ -1949,7 +1950,7 @@ struct xRotatePropertiesReq{                            /* followed by LIST of A
     CARD8 reqType;
     BYTE pad;
     CARD16 length;
-    Window window;
+    Xproto_Window window;
     CARD16 nAtoms;
     INT16 nPositions;
 }
