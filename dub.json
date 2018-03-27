@@ -4,6 +4,7 @@
     "homepage": "http://www.x.org/wiki/",
     "license": "LGPL v3",
     "sourcePaths":["."],
+    "importPaths":["."],
     "excludedSourceFiles":[
         "deimos/X11/Xlib_xcb.d",
         "example.d"
