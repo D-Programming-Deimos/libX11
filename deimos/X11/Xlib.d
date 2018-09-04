@@ -2863,7 +2863,7 @@ extern Bool XQueryExtension(
 
 extern int XQueryKeymap(
     Display*                                            /* display                                                      */,
-    char [32]                                           /* keys_return                                                  */
+    ref ubyte [32]                                      /* keys_return                                                  */
 );
 
 extern Bool XQueryPointer(
