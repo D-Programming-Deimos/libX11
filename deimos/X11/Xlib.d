@@ -286,7 +286,7 @@ struct XImage{
     XPointer obdata;                                    /* hook for the object routines to hang on                      */
     struct F {                                          /* image manipulation routines                                  */
         extern (C) nothrow:
-		XImage* function(
+        XImage* function(
                             XDisplay*   /* display          */,
                             Visual*     /* visual           */,
                             uint        /* depth            */,
@@ -800,7 +800,7 @@ struct XClientMessageEvent{
                     short[10] s;
                     c_long[5] l;
                 }
-	_data data;
+    _data data;
 }
 
 struct XMappingEvent{
@@ -1295,9 +1295,9 @@ struct XIMValuesList{
 }
 
 version( Windows ){
-	extern int	*_Xdebug_p;
+    extern int  *_Xdebug_p;
 } else {
-	extern int _Xdebug;
+    extern int _Xdebug;
 }
 
 extern XFontStruct* XLoadQueryFont(
