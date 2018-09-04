@@ -5,12 +5,12 @@ import deimos.X11.Xlib;
 
 extern (C) nothrow:
 
-xcb_connection_t*	XGetXCBConnection(Display* dpy);
+xcb_connection_t* XGetXCBConnection(Display* dpy);
 
 enum XEventQueueOwner
 {
-	XlibOwnsEventQueue = 0,
-	XCBOwnsEventQueue
+    XlibOwnsEventQueue = 0,
+    XCBOwnsEventQueue
 }
 
-void	XSetEventQueueOwner(Display* dpy, XEventQueueOwner owner);
+void XSetEventQueueOwner(Display* dpy, XEventQueueOwner owner);
