@@ -1,5 +1,5 @@
 {
-    "name": "libX11",
+    "name": "libx11",
     "description": "Core X11 protocol client library.",
     "homepage": "http://www.x.org/wiki/",
     "license": "LGPL v3",
