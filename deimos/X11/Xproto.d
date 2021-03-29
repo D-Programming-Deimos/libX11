@@ -945,13 +945,14 @@ struct xError{
 enum ELFlagFocus       = 1 << 0;
 enum ELFlagSameScreen  = 1 << 1;
 struct _xEvent {
-    union u{
-        struct u{
+    union {
+        struct U{
             BYTE type;
             BYTE detail;
             CARD16 sequenceNumber;
-        }
-        struct keyButtonPointer{
+        } U u;
+
+        struct KeyButtonPointer{
             CARD32 pad00;
             Time time;
             Window root, event, child;
@@ -959,8 +960,9 @@ struct _xEvent {
             KeyButMask state;
             BOOL sameScreen;
             BYTE pad1;
-        }
-        struct enterLeave{
+        } KeyButtonPointer keyButtonPointer;
+
+        struct EnterLeave{
             CARD32 pad00;
             Time time;
             Window root, event, child;
@@ -968,21 +970,24 @@ struct _xEvent {
             KeyButMask state;
             BYTE mode;                                  /* really XMode                                                 */
             BYTE flags;                                 /* sameScreen and focus booleans, packed together               */
-        }
-        struct focus{
+        } EnterLeave enterLeave;
+
+        struct Focus{
             CARD32 pad00;
             Window window;
             BYTE mode;                                  /* really XMode                                                 */
             BYTE pad1, pad2, pad3;
-        }
-        struct expose{
+        } Focus focus;
+
+        struct Expose{
             CARD32 pad00;
             Window window;
             CARD16 x, y, width, height;
             CARD16 count;
             CARD16 pad2;
-        }
-        struct graphicsExposure{
+        } Expose expose;
+
+        struct GraphicsExposure{
             CARD32 pad00;
             Drawable drawable;
             CARD16 x, y, width, height;
@@ -990,28 +995,32 @@ struct _xEvent {
             CARD16 count;
             BYTE majorEvent;
             BYTE pad1, pad2, pad3;
-        }
-        struct noExposure{
+        } GraphicsExposure graphicsExposure;
+
+        struct NoExposure{
             CARD32 pad00;
             Drawable drawable;
             CARD16 minorEvent;
             BYTE majorEvent;
             BYTE bpad;
-        }
-        struct visibility{
+        } NoExposure noExposure;
+
+        struct Visibility{
             CARD32 pad00;
             Window window;
             CARD8 state;
             BYTE pad1, pad2, pad3;
-        }
-        struct createNotify{
+        } Visibility visibility;
+
+        struct CreateNotify{
             CARD32 pad00;
             Window parent, window;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             BOOL c_override;
             BYTE bpad;
-        }
+        } CreateNotify createNotify;
+
     /*
      * The event fields in the structures for DestroyNotify, UnmapNotify,
      * MapNotify, ReparentNotify, ConfigureNotify, CirculateNotify, GravityNotify,
@@ -1020,69 +1029,79 @@ struct _xEvent {
      * Also note that MapRequest, ConfigureRequest and CirculateRequest have
      * the same offset for the event window.
      */
-        struct destroyNotify{
+        struct DestroyNotify{
             CARD32 pad00;
             Window event, window;
-        }
-        struct unmapNotify{
+        } DestroyNotify destroyNotify;
+
+        struct UnmapNotify{
             CARD32 pad00;
             Window event, window;
             BOOL fromConfigure;
             BYTE pad1, pad2, pad3;
-        }
-        struct mapNotify{
+        } UnmapNotify unmapNotify;
+
+        struct MapNotify{
             CARD32 pad00;
             Window event, window;
             BOOL c_override;
             BYTE pad1, pad2, pad3;
-        }
-        struct mapRequest{
+        } MapNotify mapNotify;
+
+        struct MapRequest{
             CARD32 pad00;
             Window parent, window;
-        }
-        struct reparent{
+        } MapRequest mapRequest;
+
+        struct Reparent{
             CARD32 pad00;
             Window event, window, parent;
             INT16 x, y;
             BOOL c_override;
             BYTE pad1, pad2, pad3;
-        }
-        struct configureNotify{
+        } Reparent reparent;
+
+        struct ConfigureNotify{
             CARD32 pad00;
             Window event, window, aboveSibling;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             BOOL c_override;
             BYTE bpad;
-        }
-        struct configureRequest{
+        } ConfigureNotify configureNotify;
+
+        struct ConfigureRequest{
             CARD32 pad00;
             Window parent, window, sibling;
             INT16 x, y;
             CARD16 width, height, borderWidth;
             CARD16 valueMask;
             CARD32 pad1;
-        }
-        struct gravity{
+        } ConfigureRequest configureRequest;
+
+        struct Gravity{
                 CARD32 pad00;
             Window event, window;
             INT16 x, y;
             CARD32 pad1, pad2, pad3, pad4;
-        }
-        struct resizeRequest{
+        } Gravity gravity;
+
+        struct ResizeRequest{
             CARD32 pad00;
             Window window;
             CARD16 width, height;
-        }
-        struct circulate{
+        } ResizeRequest resizeRequest;
+
+        struct Circulate{
     /* The event field in the circulate record is really the parent when this
        is used as a CirculateRequest instead of a CirculateNotify */
             CARD32 pad00;
             Window event, window, parent;
             BYTE place;                                 /* Top or Bottom                                                */
             BYTE pad1, pad2, pad3;
-        }
-        struct property{
+        } Circulate circulate;
+
+        struct Property{
             CARD32 pad00;
             Window window;
             Atom atom;
@@ -1090,53 +1109,61 @@ struct _xEvent {
             BYTE state;                                 /* NewValue or Deleted                                          */
             BYTE pad1;
             CARD16 pad2;
-        }
-        struct selectionClear{
+        } Property property;
+
+        struct SelectionClear{
             CARD32 pad00;
             Time time;
             Window window;
             Atom atom;
-        }
-        struct selectionRequest{
+        } SelectionClear selectionClear;
+
+        struct SelectionRequest{
             CARD32 pad00;
             Time time;
             Window owner, requestor;
             Atom selection, target, property;
-        }
-        struct selectionNotify{
+        } SelectionRequest selectionRequest;
+
+        struct SelectionNotify{
             CARD32 pad00;
             Time time;
             Window requestor;
             Atom selection, target, property;
-        }
-        struct colormap{
+        } SelectionNotify selectionNotify;
+
+        struct Colormap{
             CARD32 pad00;
             Window window;
-            Colormap colormap;
+            .Colormap colormap;
             BOOL c_new;
             BYTE state;                                 /* Installed or UnInstalled                                     */
             BYTE pad1, pad2;
-        }
-        struct mappingNotify{
+        } Colormap colormap;
+
+        struct MappingNotify{
             CARD32 pad00;
             CARD8 request;
             KeyCode firstKeyCode;
             CARD8 count;
             BYTE pad1;
-        }
-        struct clientMessage{
+        } MappingNotify mappingNotify;
+
+        struct ClientMessage{
             CARD32 pad00;
             Window window;
-            union u{
-                struct l{
+            union
+            {
+                struct L{
                     Atom type;
                     INT32 longs0;
                     INT32 longs1;
                     INT32 longs2;
                     INT32 longs3;
                     INT32 longs4;
-                }
-                struct s{
+                } L l;
+
+                struct S{
                     Atom type;
                     INT16 shorts0;
                     INT16 shorts1;
@@ -1148,16 +1175,18 @@ struct _xEvent {
                     INT16 shorts7;
                     INT16 shorts8;
                     INT16 shorts9;
-                }
-                struct b{
+                } S s;
+
+                struct B{
                     Atom type;
                     INT8[20] bytes;
-                }
+                } B b;
             }
         }
     }
 }
 alias _xEvent xEvent;
+static assert(xEvent.sizeof == sz_xEvent);
 
 /*********************************************************
  *
