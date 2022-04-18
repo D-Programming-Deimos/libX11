@@ -2475,3 +2475,17 @@ SOFTWARE.
 #define XK_Sinh_luu2          0x1000df3  /* U+0DF3 SINHALA DIGA GAYANUKITTA */
 #define XK_Sinh_kunddaliya    0x1000df4  /* U+0DF4 SINHALA KUNDDALIYA */
 #endif /* XK_SINHALA */
+
+/*
+ * Ethiopic (https://unicode.org/charts/PDF/U1200.pdf)
+ */
+
+#ifdef XK_ETHIOPIC
+#define XK_Ethiopic_ha            0x1200  /* U+1200 ETHIOPIC Ha */
+#define XK_Ethiopic_hu            0x1201  /* U+1200 ETHIOPIC Hu */
+#define XK_Ethiopic_hi            0x1202  /* U+1200 ETHIOPIC Hi */
+#define XK_Ethiopic_haa            0x1203  /* U+1200 ETHIOPIC Haa */
+#define XK_Ethiopic_hee            0x1204  /* U+1200 ETHIOPIC Hee */
+#define XK_Ethiopic_he            0x1205  /* U+1200 ETHIOPIC He */
+#define XK_Ethiopic_ho            0x1206  /* U+1200 ETHIOPIC Ho */
+#endif /* XK_ETHIOPIC */
