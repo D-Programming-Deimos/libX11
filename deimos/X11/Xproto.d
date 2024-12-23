@@ -1152,8 +1152,7 @@ struct _xEvent {
         struct ClientMessage{
             CARD32 pad00;
             Window window;
-            union
-            {
+            union U{
                 struct L{
                     Atom type;
                     INT32 longs0;
@@ -1181,8 +1180,8 @@ struct _xEvent {
                     Atom type;
                     INT8[20] bytes;
                 } B b;
-            }
-        }
+            } U u;
+        } ClientMessage clientMessage;
     }
 }
 alias _xEvent xEvent;
